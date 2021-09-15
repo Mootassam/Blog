@@ -19,21 +19,26 @@ const Error404Page = () => {
                         <i className='fas fa-search'></i>
                       </div>
                     </div>
-
+                    <input
+                      type='text'
+                      className='form-control'
+                      placeholder='Search'
+                    />
                     <div className='input-group-append'>
-                      <Link to='/'>
-                        <button className='btn btn-primary btn-lg'>
-                          Back to Home
-                        </button>
-                      </Link>
+                      <button className='btn btn-primary btn-lg'>Search</button>
                     </div>
                   </div>
                 </div>
               </form>
+              <div className='mt-3'>
+                <Link to='/'>
+                  <a>Back to Home</a>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-        <div className='simple-footer mt-5'>Copyright &copy; CodiePie 2020</div>
+        {/* <div className='simple-footer mt-5'>Copyright &copy; CodiePie 2020</div> */}
       </div>
     </section>
   );
