@@ -211,6 +211,8 @@ select.form-control:not([size]):not([multiple]) {
   z-index: 5;
   left: initial;
   right: 0;
+  justify-content: center;
+  align-content: center;
 }
 .form-group.floating-addon .input-group-prepend .input-group-text,
 .form-group.floating-addon .input-group-append .input-group-text {

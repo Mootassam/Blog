@@ -11,7 +11,7 @@ const privateRoutes = [
   },
 ].filter(Boolean);
 const simpleRoutes = [
-  { path: "**", loader: () => import("src/view/Dashboard/DashboardPage") },
+  { path: "**", loader: () => import("src/view/shared/errors/Error404Page") },
 ];
 export default {
   privateRoutes,
