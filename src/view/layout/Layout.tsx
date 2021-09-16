@@ -7,12 +7,11 @@ function Layout(props) {
   const match = useRouteMatch();
   return (
     <div className='main-wrapper main-wrapper-1'>
-      <div className='navbar-bg'>
-        <Header />
-        <Menue />
-        <div className='main-content'>{props.children}</div>
-        <Footer />
-      </div>
+      <div className='navbar-bg'> </div>
+      <Header />
+      <Menue />
+      <div className='main-content'>{props.children}</div>
+      <Footer />
     </div>
   );
 }
