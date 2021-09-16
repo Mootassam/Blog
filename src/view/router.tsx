@@ -11,7 +11,7 @@ const privateRoutes = [
   },
   {
     path: "/contact/new",
-    loader: () => import("src/view/Contact/form/FomContactPage"),
+    loader: () => import("src/view/Contact/form/ContactFomPage"),
   },
 ].filter(Boolean);
 const simpleRoutes = [
