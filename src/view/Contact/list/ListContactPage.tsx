@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FcDoNotInhale, FcAssistant, FcSearch } from "react-icons/fc";
+
 function ListContactPage(props) {
   return (
     <section className='section'>
@@ -19,9 +21,8 @@ function ListContactPage(props) {
       <div className='section-body'>
         <h2 className='section-title'>
           <Link to='/contact/new'>
-            <a className='btn btn-primary'>Add New Contact</a>
+            <button className='btn btn-primary'>Add New Contact</button>
           </Link>
-          &nbsp;
         </h2>
 
         <div className='row'>
@@ -39,7 +40,7 @@ function ListContactPage(props) {
                       />
                       <div className='input-group-btn'>
                         <button className='btn btn-primary'>
-                          <i className='fas fa-search'></i>
+                          <FcSearch size={20} />
                         </button>
                       </div>
                     </div>
