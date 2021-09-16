@@ -6,13 +6,15 @@ import Footer from "./Footer";
 function Layout(props) {
   const match = useRouteMatch();
   return (
-    <div className='main-wrapper main-wrapper-1'>
-      <div className='navbar-bg'> </div>
-      <Header />
-      <Menue />
-      <div className='main-content'>{props.children}</div>
+    <>
+      <div className='main-wrapper main-wrapper-1'>
+        <div className='navbar-bg'> </div>
+        <Header />
+        <Menue />
+        <div className='main-content'>{props.children}</div>
+      </div>
       <Footer />
-    </div>
+    </>
   );
 }
 
