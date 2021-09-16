@@ -9,6 +9,10 @@ const privateRoutes = [
     path: "/contact",
     loader: () => import("src/view/Contact/list/ListContactPage"),
   },
+  {
+    path: "/contact/new",
+    loader: () => import("src/view/Contact/form/FomContactPage"),
+  },
 ].filter(Boolean);
 const simpleRoutes = [
   { path: "**", loader: () => import("src/view/shared/errors/Error404Page") },

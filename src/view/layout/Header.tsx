@@ -1,5 +1,5 @@
 import React from "react";
-
+import { FcDoNotInhale, FcAssistant } from "react-icons/fc";
 function Header() {
   return (
     <nav className='navbar navbar-expand-lg main-navbar'>
@@ -119,7 +119,7 @@ function Header() {
             href='#'
             data-toggle='dropdown'
             className='nav-link nav-link-lg message-toggle beep'>
-            <i className='far fa-envelope'></i>
+            <FcAssistant size={25} />
           </a>
           <div className='dropdown-menu dropdown-list dropdown-menu-right'>
             <div className='dropdown-header'>
@@ -224,7 +224,7 @@ function Header() {
             href='#'
             data-toggle='dropdown'
             className='nav-link notification-toggle nav-link-lg beep'>
-            <i className='far fa-bell'></i>
+            <FcDoNotInhale size={25} />
           </a>
           <div className='dropdown-menu dropdown-list dropdown-menu-right'>
             <div className='dropdown-header'>

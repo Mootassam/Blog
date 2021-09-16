@@ -3,6 +3,7 @@ import ProgressBar from "src/view/shared/ProgressBar";
 function LoadingComponent() {
   useEffect(() => {
     ProgressBar.start();
+
     return () => {
       ProgressBar.done();
     };

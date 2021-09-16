@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 function ListContactPage(props) {
   return (
     <section className='section'>
@@ -17,10 +17,12 @@ function ListContactPage(props) {
       </div>
 
       <div className='section-body'>
-        <h2 className='section-title'>Table</h2>
-        <p className='section-lead'>
-          Example of some Bootstrap table components.
-        </p>
+        <h2 className='section-title'>
+          <Link to='/contact/new'>
+            <a className='btn btn-primary'>Add New Contact</a>
+          </Link>
+          &nbsp;
+        </h2>
 
         <div className='row'>
           <div className='col-12'>
