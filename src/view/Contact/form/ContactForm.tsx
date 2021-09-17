@@ -1,35 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
 import InputFormItem from "src/view/shared/form/items/InputFormItem";
 import TextAreaItem from "src/view/shared/form/items/TextAreaItem";
+import { useForm, FormProvider } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import yupFormSchemas from "../../../modules/shared/yup/yupFormSchemas";
+const schema = yup.object().shape({
+  name: yupFormSchemas.string("name", { required: true, min: 5 }),
+  email: yupFormSchemas.string("email", { required: true, min: 5 }),
+  subject: yupFormSchemas.string("subject", { required: true, min: 5 }),
+  message: yupFormSchemas.string("message", { required: true, min: 5 }),
+});
+function ContactForm(props) {
+  const [initialValues] = useState(() => {
+    const record = props.record || {};
+    return {
+      name: record.name,
+      email: record.email,
+      subject: record.subject,
+      message: record.message,
+    };
+  });
+  const form = useForm({
+    resolver: yupResolver(schema),
+    mode: "all",
+    defaultValues: initialValues,
+  });
+  const OnSubmit = (values) => {
+    alert("submited worked");
+  };
 
-const OnSubmit = () => {
-  alert("submited worked");
-};
-
-function ContactForm() {
   return (
-    <form onSubmit={OnSubmit}>
-      <div className='card-header'>
-        <h4>Default Validation</h4>
-      </div>
-      <div className='card-body'>
-        <InputFormItem label={"Name"} name={"name"} placeholder={"Name"} />
-        <InputFormItem name={"email"} label={"Email"} placeholder={"Email"} />
-        <InputFormItem
-          name={"subject"}
-          label={"Subject"}
-          placeholder={"Subject"}
-        />
-        <TextAreaItem
-          label={"Message"}
-          name={"message"}
-          placeholder={"Message"}
-        />
-      </div>
-      <div className='card-footer text-right'>
-        <button className='btn btn-primary'>Submit</button>
-      </div>
-    </form>
+    <FormProvider {...form}>
+      <form onSubmit={form.handleSubmit(OnSubmit)}>
+        <div className='card-header'>
+          <h4>Default Validation</h4>
+        </div>
+        <div className='card-body'>
+          <InputFormItem label={"Name"} name={"name"} placeholder={"Name"} />
+          <InputFormItem name={"email"} label={"Email"} placeholder={"Email"} />
+          <InputFormItem
+            name={"subject"}
+            label={"Subject"}
+            placeholder={"Subject"}
+            required={true}
+          />
+          <TextAreaItem
+            name={"message"}
+            label={"Message"}
+            placeholder={"Message"}
+          />
+        </div>
+        <div className='card-footer text-right'>
+          <button
+            className='btn btn-primary'
+            onClick={form.handleSubmit(OnSubmit)}>
+            Submit
+          </button>
+        </div>
+      </form>
+    </FormProvider>
   );
 }
 export default ContactForm;
