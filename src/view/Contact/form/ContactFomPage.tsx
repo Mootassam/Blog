@@ -2,6 +2,11 @@ import React from "react";
 import ContactForm from "./ContactForm";
 
 function FomContactPage() {
+  const doSubmit = (data) => {
+    console.log("====================================");
+    console.log(data);
+    console.log("====================================");
+  };
   return (
     <section className='section'>
       <div className='section-header'>
@@ -23,9 +28,9 @@ function FomContactPage() {
           Form validation using default from Bootstrap 4
         </p>
         <div className='row'>
-          <div className='col-12 col-md-6 col-lg-12'>
+          <div className='col-12 col-md-12 col-lg-12'>
             <div className='card'>
-              <ContactForm />
+              <ContactForm onSubmit={doSubmit} />
             </div>
           </div>
         </div>

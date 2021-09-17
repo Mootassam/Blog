@@ -27,7 +27,12 @@ function ContactForm(props) {
     defaultValues: initialValues,
   });
   const OnSubmit = (values) => {
-    alert("submited worked");
+    props.onSubmit(values);
+  };
+  const onReset = () => {
+    Object.keys(initialValues).forEach((key) => {
+      form.setValue(key, initialValues[key]);
+    });
   };
 
   return (
@@ -56,6 +61,10 @@ function ContactForm(props) {
             className='btn btn-primary'
             onClick={form.handleSubmit(OnSubmit)}>
             Submit
+          </button>
+          &nbsp;
+          <button className='btn btn-secondary' onClick={onReset}>
+            Renitiliser
           </button>
         </div>
       </form>
