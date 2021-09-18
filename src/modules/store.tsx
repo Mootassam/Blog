@@ -13,9 +13,8 @@ export function configureStore(preloadedState?) {
   const middlewares = [thunkMiddleware, routerMiddleware(history)].filter(
     Boolean
   );
-
   store = createStore(
-    createRootReducer(),
+    createRootReducer(history),
     preloadedState,
     composeWithDevTools(applyMiddleware(...middlewares))
   );

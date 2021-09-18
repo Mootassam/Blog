@@ -4,7 +4,6 @@ import React from "react";
 import { Provider } from "react-redux";
 import RoutesComponent from "src/view/routes/RoutesComponent";
 import jQuery from "jquery";
-import { BrowserRouter } from "react-router-dom";
 import "bootstrap/dist/js/bootstrap";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
@@ -15,9 +14,9 @@ const store = configureStore();
 const App = (props) => {
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <ConnectedRouter history={getHistory()}>
         <RoutesComponent />
-      </BrowserRouter>
+      </ConnectedRouter>
     </Provider>
   );
 };
