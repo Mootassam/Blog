@@ -1,11 +1,13 @@
 import React from "react";
 import ContactForm from "./ContactForm";
-
+import actions from "src/modules/contact/form/ContactActions";
+import { values } from "lodash";
+import { useDispatch, useSelector } from "react-redux";
+import { getHistory } from "../../../modules/store";
 function FomContactPage() {
+  const dispatch = useDispatch();
   const doSubmit = (data) => {
-    console.log("====================================");
-    console.log(data);
-    console.log("====================================");
+    dispatch(actions.doCreate(data));
   };
   return (
     <section className='section'>
@@ -30,7 +32,10 @@ function FomContactPage() {
         <div className='row'>
           <div className='col-12 col-md-12 col-lg-12'>
             <div className='card'>
-              <ContactForm onSubmit={doSubmit} />
+              <ContactForm
+                onSubmit={doSubmit}
+                onCancel={() => getHistory().push("/contact")}
+              />
             </div>
           </div>
         </div>

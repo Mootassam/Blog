@@ -58,13 +58,19 @@ function ContactForm(props) {
         </div>
         <div className='card-footer text-right'>
           <button
-            className='btn btn-primary'
+            className='btn btn-info'
             onClick={form.handleSubmit(OnSubmit)}>
             Submit
           </button>
           &nbsp;
-          <button className='btn btn-secondary' onClick={onReset}>
+          <button className='btn btn-primary' onClick={onReset}>
             Renitiliser
+          </button>
+          &nbsp;
+          <button
+            className='btn btn-secondary'
+            onClick={() => props.onCancel()}>
+            Cancel
           </button>
         </div>
       </form>

@@ -1,3 +1,5 @@
+import Message from "../../../view/shared/messages";
+import Errors from "../../shared/error/errors";
 import ContactService from "../contactService";
 
 const prefix = "CONTACT_FORM";
@@ -11,8 +13,10 @@ const contactFormActions = {
     try {
       dispatch({ type: contactFormActions.CREATE_STARTED });
       dispatch({ type: contactFormActions.CREATED_SUCCESS });
+      Message.success("Submited is Successful");
       await ContactService.create(values);
     } catch (error) {
+      Errors.handle(error);
       dispatch({ type: contactFormActions.CREATED_ERROR });
     }
   },
