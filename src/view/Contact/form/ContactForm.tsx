@@ -62,6 +62,9 @@ function ContactForm(props) {
             className='btn btn-info'
             onClick={form.handleSubmit(OnSubmit)}>
             Submit
+            <div className='spinner-border text-primary' role='status'>
+              <span className='sr-only'>Loading...</span>
+            </div>
           </button>
           &nbsp;
           <button
