@@ -56,6 +56,7 @@ function ContactForm(props) {
             placeholder={"Message"}
           />
         </div>
+
         <div className='card-footer text-right'>
           <button
             className='btn btn-info'
@@ -63,13 +64,17 @@ function ContactForm(props) {
             Submit
           </button>
           &nbsp;
-          <button className='btn btn-primary' onClick={onReset}>
+          <button
+            className='btn btn-primary'
+            onClick={onReset}
+            disabled={props.saveLoading}>
             Renitiliser
           </button>
           &nbsp;
           <button
             className='btn btn-secondary'
-            onClick={() => props.onCancel()}>
+            onClick={() => props.onCancel()}
+            disabled={props.saveLoading}>
             Cancel
           </button>
         </div>

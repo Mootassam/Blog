@@ -4,7 +4,9 @@ import actions from "src/modules/contact/form/ContactActions";
 import { values } from "lodash";
 import { useDispatch, useSelector } from "react-redux";
 import { getHistory } from "../../../modules/store";
+import selectors from "src/modules/contact/form/ContactSelectors";
 function FomContactPage() {
+  const saveLoading = useSelector(selectors.selectSaveLoading);
   const dispatch = useDispatch();
   const doSubmit = (data) => {
     dispatch(actions.doCreate(data));
@@ -34,6 +36,7 @@ function FomContactPage() {
             <div className='card'>
               <ContactForm
                 onSubmit={doSubmit}
+                saveLoading={saveLoading}
                 onCancel={() => getHistory().push("/contact")}
               />
             </div>
