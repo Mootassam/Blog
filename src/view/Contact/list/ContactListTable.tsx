@@ -19,10 +19,10 @@ function ContactListTable() {
               </div>
             </th>
             <th>Task Name</th>
-            <th>Progress</th>
-            <th>Members</th>
-            <th>Due Date</th>
-            <th>Status</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Subject</th>
+            <th>Message</th>
             <th>Action</th>
           </tr>
           <tr>
