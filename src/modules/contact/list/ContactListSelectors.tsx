@@ -30,9 +30,13 @@ const selectOffset = createSelector([selectRaw], (raw) => {
   return (current - 1) * pagination.pageSize;
 });
 
+const selectRawFilter = createSelector([selectRaw], (raw) => {
+  return raw.rawFilter;
+});
 const ContactListSelectors = {
   selectOrderBy,
   selectLimit,
   selectOffset,
+  selectRawFilter,
 };
 export default ContactListSelectors;

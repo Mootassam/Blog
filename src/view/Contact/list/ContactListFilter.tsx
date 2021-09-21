@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FcSearch } from "react-icons/fc";
+import selectors from "src/modules/contact/list/ContactListSelectors";
 
+import { useSelector, useDispatch } from "react-redux";
+const emptyValues = {
+  name: null,
+  email: null,
+  subject: null,
+  message: null,
+};
 function ContactListFilter() {
   return (
     <div className='card-header'>
@@ -11,7 +19,7 @@ function ContactListFilter() {
             <input type='text' className='form-control' placeholder='Search' />
             <div className='input-group-btn'>
               <button className='btn btn-primary'>
-                <FcSearch size={20} />
+                <FcSearch size={8} />
               </button>
             </div>
           </div>
