@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { FcSearch } from "react-icons/fc";
 import selectors from "src/modules/contact/list/ContactListSelectors";
@@ -10,6 +11,14 @@ const emptyValues = {
   message: null,
 };
 function ContactListFilter() {
+  const rawFilter = useSelector(selectors.selectRawFilter);
+  const [initialValues] = useState(() => {
+    return {
+      ...emptyValues,
+      ...rawFilter,
+    };
+  });
+
   return (
     <div className='card-header'>
       <h4>Advanced Table</h4>
