@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { FcSearch } from "react-icons/fc";
 import selectors from "src/modules/contact/list/ContactListSelectors";
-
+import actions from "src/modules/contact/list/ContactListActions";
 import { useSelector, useDispatch } from "react-redux";
 const emptyValues = {
   name: null,
@@ -12,6 +12,7 @@ const emptyValues = {
 };
 function ContactListFilter() {
   const rawFilter = useSelector(selectors.selectRawFilter);
+  const dispatch = useDispatch();
   const [initialValues] = useState(() => {
     return {
       ...emptyValues,
@@ -19,6 +20,10 @@ function ContactListFilter() {
     };
   });
 
+  useEffect(() => {
+    dispatch(actions.doFetch(initialValues, rawFilter));
+    // eslint-disable-next-line
+  }, [dispatch]);
   return (
     <div className='card-header'>
       <h4>Advanced Table</h4>
