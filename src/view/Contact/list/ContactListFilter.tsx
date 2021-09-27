@@ -10,18 +10,15 @@ const emptyValues = {
   subject: null,
   message: null,
 };
-function ContactListFilter() {
-  const rawFilter = useSelector(selectors.selectRawFilter);
+function ContactListFilter(props) {
   const dispatch = useDispatch();
-  const [initialValues] = useState(() => {
-    return {
-      ...emptyValues,
-      ...rawFilter,
-    };
-  });
-
+  // const [initialValues] = useState(() => {
+  //   return {
+  //     ...emptyValues,
+  //   };
+  // });
   useEffect(() => {
-    dispatch(actions.doFetch(initialValues, rawFilter));
+    dispatch(actions.doFetch(emptyValues, {}));
     // eslint-disable-next-line
   }, [dispatch]);
   return (

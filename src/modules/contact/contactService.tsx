@@ -83,19 +83,19 @@ export default class ContactService {
     return response.data;
   }
 
-  static async listAutocomplete(query, limit) {
-    const params = {
-      query,
-      limit,
-    };
+  // static async listAutocomplete(query, limit) {
+  //   const params = {
+  //     query,
+  //     limit,
+  //   };
 
-    const response = await authAxios.get(
-      `/tenant/614634aa79ebbbc0b9c936b4/contact/autocomplete`,
-      {
-        params,
-      }
-    );
+  //   const response = await authAxios.get(
+  //     `/tenant/614634aa79ebbbc0b9c936b4/contact/autocomplete`,
+  //     {
+  //       params,
+  //     }
+  //   );
 
-    return response.data;
-  }
+  //   return response.data;
+  // }
 }

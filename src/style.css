@@ -3765,6 +3765,9 @@ body:not(.sidebar-mini)
   a {
   color: rgba(255, 255, 255, 0.7);
 }
+.text {
+  font-size: large;
+}
 body:not(.sidebar-mini)
   .sidebar-style-3
   .sidebar-menu
