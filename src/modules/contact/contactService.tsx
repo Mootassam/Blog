@@ -65,19 +65,9 @@ export default class ContactService {
     return response.data;
   }
 
-  static async list(filter, orderBy, limit, offset) {
-    const params = {
-      filter,
-      orderBy,
-      limit,
-      offset,
-    };
-
+  static async list() {
     const response = await authAxios.get(
-      `/tenant/614634aa79ebbbc0b9c936b4/contact`,
-      {
-        params,
-      }
+      `/tenant/614634aa79ebbbc0b9c936b4/contact`
     );
 
     return response.data;

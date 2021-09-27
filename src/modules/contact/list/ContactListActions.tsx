@@ -1,5 +1,5 @@
 import ContactService from "../contactService";
-import selectors from "src/modules/contact/list/ContactListSelectors";
+import selectors from "src/modules/contact/list/contactListSelectors";
 import Errors from "../../shared/error/errors";
 const prefix = "CONTACT_LIST";
 const ContactListActions = {
@@ -13,14 +13,8 @@ const ContactListActions = {
       try {
         dispatch({
           type: ContactListActions.LIST_STARTED,
-          payload: { filter, rawFilter, keepPagination },
         });
-        const response = await ContactService.list(
-          filter,
-          selectors.selectOrderBy(getState()),
-          selectors.selectLimit(getState()),
-          selectors.selectOffset(getState())
-        );
+        const response = await ContactService.list();
 
         dispatch({
           type: ContactListActions.LIST_SUCCESS,

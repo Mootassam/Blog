@@ -4,14 +4,6 @@ const initialData = {
   rows: [] as Array<any>,
   count: 0,
   loading: false,
-  filter: {},
-  rawFilter: {},
-  pagination: {
-    current: 1,
-    pageSize: INITIAL_PAGE_SIZE,
-  },
-  sorter: {},
-  selectedKeys: [] as Array<string>,
 };
 
 export default (state = initialData, { type, payload }) => {
@@ -19,16 +11,6 @@ export default (state = initialData, { type, payload }) => {
     return {
       ...state,
       loading: true,
-      selectedKeys: [],
-      filter: payload ? payload.filter : {},
-      rawFilter: payload ? payload.rawFilter : {},
-      pagination:
-        payload && payload.keepPagination
-          ? state.pagination
-          : {
-              current: 1,
-              pageSize: INITIAL_PAGE_SIZE,
-            },
     };
   }
   if (type === actions.LIST_SUCCESS) {
