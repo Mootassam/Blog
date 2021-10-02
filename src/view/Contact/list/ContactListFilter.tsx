@@ -17,10 +17,10 @@ function ContactListFilter(props) {
   //     ...emptyValues,
   //   };
   // });
-  useEffect(() => {
-    dispatch(actions.doFetch());
-    // eslint-disable-next-line
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(actions.doFetch());
+  //   // eslint-disable-next-line
+  // }, [dispatch]);
 
   return (
     <div className='card-header'>

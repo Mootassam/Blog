@@ -2,7 +2,7 @@ import React from "react";
 import selectors from "src/modules/contact/list/contactListSelectors";
 import { useDispatch, useSelector } from "react-redux";
 function ContactListTable(props) {
-  const rows = useSelector(selectors.selectRows);
+  // const rows = useSelector(selectors.selectRows);
   return (
     <div className='card-body p-0'>
       <div className='table-responsive'>
