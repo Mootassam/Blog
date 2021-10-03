@@ -7,7 +7,7 @@ const selectRows = createSelector([selectRaw], (raw) => raw.rows);
 const selectCount = createSelector([selectRaw], (raw) => raw.count);
 
 const selectHasRows = createSelector([selectCount], (count) => count > 0);
-
+const findLoading = createSelector([selectRaw], (loading) => loading.loading);
 // const selectOrderBy = createSelector([selectRaw], (raw) => {
 //   const sorter = raw.sorter;
 //   if (!sorter) {
@@ -44,6 +44,7 @@ const contactListSelectors = {
   selectRows,
   selectCount,
   selectHasRows,
+  findLoading,
   // selectOrderBy,
   // selectLimit,
   // selectOffset,
