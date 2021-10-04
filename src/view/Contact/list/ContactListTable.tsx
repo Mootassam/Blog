@@ -22,14 +22,12 @@ function ContactListTable(props) {
                 <label className='custom-control-label'>&nbsp;</label>
               </div>
             </th>
-
             <th>Name</th>
             <th>Email</th>
             <th>Subject</th>
-            <th>Message</th>
+
             <th>Action</th>
           </tr>
-
           {findLoading && <Spinner />}
           {!findLoading &&
             rows.map((rows) => (
@@ -49,9 +47,6 @@ function ContactListTable(props) {
                 <td className='align-middle'>{rows.name}</td>
                 <td>{rows.email}</td>
                 <td>{rows.subject}</td>
-                <td>
-                  <div className='badge badge-success'>{rows.message}</div>
-                </td>
                 <td>
                   <a href='#' className='btn btn-secondary'>
                     Detail
