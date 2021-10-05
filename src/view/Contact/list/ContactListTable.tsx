@@ -2,6 +2,7 @@ import React from "react";
 import selectors from "src/modules/contact/list/contactListSelectors";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../../shared/Spinner/Spinner";
+import { Link } from "react-router-dom";
 function ContactListTable(props) {
   const rows = useSelector(selectors.selectRows);
   const findLoading = useSelector(selectors.findLoading);
@@ -48,9 +49,11 @@ function ContactListTable(props) {
                 <td>{rows.email}</td>
                 <td>{rows.subject}</td>
                 <td>
-                  <a href='#' className='btn btn-secondary'>
-                    Detail
-                  </a>
+                  <Link to={`/contact/view/${rows.id}`}>
+                    <a href='#' className='btn btn-secondary'>
+                      Detail
+                    </a>
+                  </Link>
                   &nbsp;
                   <a href='#' className='btn btn-danger'>
                     Delete
