@@ -4,13 +4,14 @@ import ContactViewToolbar from "src/view/Contact/view/ContactViewToolbar";
 
 import selectors from "src/modules/contact/view/ContactViewSelectors";
 import actions from "src/modules/contact/view/ContactViewActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRouteMatch } from "react-router-dom";
-function ContactViewPage({ props }) {
+function ContactViewPage() {
   const dispatch = useDispatch();
   const match = useRouteMatch();
-  const loading = selectors.viewLoading;
-  const data = selectors.SelectData;
+  const loading = useSelector(selectors.viewLoading);
+  const record = useSelector(selectors.SelectData);
+
   useEffect(() => {
     dispatch(actions.doFind(match.params.id));
   }, [dispatch, match.params.id]);
@@ -28,7 +29,8 @@ function ContactViewPage({ props }) {
 
       <div className='section-body'>
         <ContactViewToolbar />
-        <ContactView />
+
+        <ContactView loading={loading} record={record} />
       </div>
     </section>
   );

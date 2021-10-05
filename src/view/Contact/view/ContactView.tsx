@@ -1,6 +1,11 @@
 import React from "react";
+import Spinner from "../../shared/Spinner/Spinner";
 
-function ContactView() {
+function ContactView(props) {
+  const { record, loading } = props;
+  if (loading || !record) {
+    return <Spinner />;
+  }
   return (
     <div className='row'>
       <div className='col-md-12'>
@@ -20,10 +25,10 @@ function ContactView() {
                 <div className='ticket-header'>
                   <div className='ticket-detail'>
                     <div className='ticket-title'>
-                      <h4>Technical Problem</h4>
+                      <h4>{record.subject}</h4>
                     </div>
                     <div className='ticket-info'>
-                      <div className='font-weight-600'>Farhan A. Mujib</div>
+                      <div className='font-weight-600'>{record.name}</div>
                       <div className='bullet'></div>
                       <div className='text-primary font-weight-600'>
                         2 min ago
@@ -32,62 +37,7 @@ function ContactView() {
                   </div>
                 </div>
                 <div className='ticket-description'>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.
-                  </p>
-
-                  <div className='gallery'>
-                    <div
-                      className='gallery-item'
-                      data-image='assets/img/news/img01.jpg'
-                      data-title='Image 1'></div>
-                    <div
-                      className='gallery-item'
-                      data-image='assets/img/news/img02.jpg'
-                      data-title='Image 2'></div>
-                    <div
-                      className='gallery-item'
-                      data-image='assets/img/news/img03.jpg'
-                      data-title='Image 3'></div>
-                    <div
-                      className='gallery-item gallery-more'
-                      data-image='assets/img/news/img04.jpg'
-                      data-title='Image 4'></div>
-                  </div>
-
-                  <div className='ticket-divider'></div>
-
-                  <div className='ticket-form'>
-                    <form>
-                      <div className='form-group'>
-                        <textarea
-                          className='summernote form-control'
-                          placeholder='Type a reply ...'></textarea>
-                      </div>
-                      <div className='form-group text-right'>
-                        <button className='btn btn-primary btn-lg'>
-                          Reply
-                        </button>
-                      </div>
-                    </form>
-                  </div>
+                  <p>{record.message}</p>
                 </div>
               </div>
             </div>
