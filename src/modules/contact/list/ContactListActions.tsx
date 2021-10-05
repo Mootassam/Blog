@@ -3,9 +3,9 @@ import selectors from "src/modules/contact/list/contactListSelectors";
 import Errors from "../../shared/error/errors";
 const prefix = "CONTACT_LIST";
 const ContactListActions = {
-  LIST_STARTED: `${prefix}_LIST_STARTED`,
-  LIST_SUCCESS: `${prefix}_LIST_SUCCESS`,
-  LIST_ERROR: `${prefix}_LIST_ERROR`,
+  LIST_STARTED: `${prefix}_STARTED`,
+  LIST_SUCCESS: `${prefix}_SUCCESS`,
+  LIST_ERROR: `${prefix}_ERROR`,
 
   doFetch:
     (filter?, rawFilter?, keepPagination = false) =>

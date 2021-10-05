@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
+import ContactView from "src/view/Contact/view/ContactView";
+import ContactViewToolbar from "src/view/Contact/view/ContactViewToolbar";
 
-function ContactViewPage() {
+import selectors from "src/modules/contact/view/ContactViewSelectors";
+import actions from "src/modules/contact/view/ContactViewActions";
+import { useDispatch } from "react-redux";
+import { useRouteMatch } from "react-router-dom";
+function ContactViewPage({ props }) {
+  const dispatch = useDispatch();
+  const match = useRouteMatch();
+  const loading = selectors.viewLoading;
+  const data = selectors.SelectData;
+  useEffect(() => {
+    dispatch(actions.doFind(match.params.id));
+  }, [dispatch, match.params.id]);
   return (
     <section className='section'>
       <div className='section-header'>
@@ -14,104 +27,8 @@ function ContactViewPage() {
       </div>
 
       <div className='section-body'>
-        <h2 className='section-title'>Help Your Customer</h2>
-        <p className='section-lead'>Some customers need your help.</p>
-
-        <div className='row'>
-          <div className='col-md-12'>
-            <div className='card'>
-              <div className='card-header'>
-                <h4>Tickets</h4>
-              </div>
-              <div className='card-body'>
-                <a
-                  href='#'
-                  className='btn btn-primary btn-icon icon-left btn-lg btn-block mb-4 d-md-none'
-                  data-toggle-slide='#ticket-items'>
-                  <i className='fas fa-list'></i> All Tickets
-                </a>
-                <div className='tickets'>
-                  <div className='ticket-content'>
-                    <div className='ticket-header'>
-                      <div className='ticket-detail'>
-                        <div className='ticket-title'>
-                          <h4>Technical Problem</h4>
-                        </div>
-                        <div className='ticket-info'>
-                          <div className='font-weight-600'>Farhan A. Mujib</div>
-                          <div className='bullet'></div>
-                          <div className='text-primary font-weight-600'>
-                            2 min ago
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className='ticket-description'>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis
-                        nostrud exercitation ullamco laboris nisi ut aliquip ex
-                        ea commodo consequat. Duis aute irure dolor in
-                        reprehenderit in voluptate velit esse cillum dolore eu
-                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit
-                        anim id est laborum.
-                      </p>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis
-                        nostrud exercitation ullamco laboris nisi ut aliquip ex
-                        ea commodo consequat. Duis aute irure dolor in
-                        reprehenderit in voluptate velit esse cillum dolore eu
-                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit
-                        anim id est laborum.
-                      </p>
-
-                      <div className='gallery'>
-                        <div
-                          className='gallery-item'
-                          data-image='assets/img/news/img01.jpg'
-                          data-title='Image 1'></div>
-                        <div
-                          className='gallery-item'
-                          data-image='assets/img/news/img02.jpg'
-                          data-title='Image 2'></div>
-                        <div
-                          className='gallery-item'
-                          data-image='assets/img/news/img03.jpg'
-                          data-title='Image 3'></div>
-                        <div
-                          className='gallery-item gallery-more'
-                          data-image='assets/img/news/img04.jpg'
-                          data-title='Image 4'></div>
-                      </div>
-
-                      <div className='ticket-divider'></div>
-
-                      <div className='ticket-form'>
-                        <form>
-                          <div className='form-group'>
-                            <textarea
-                              className='summernote form-control'
-                              placeholder='Type a reply ...'></textarea>
-                          </div>
-                          <div className='form-group text-right'>
-                            <button className='btn btn-primary btn-lg'>
-                              Reply
-                            </button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <ContactViewToolbar />
+        <ContactView />
       </div>
     </section>
   );
