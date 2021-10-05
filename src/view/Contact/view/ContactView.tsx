@@ -1,5 +1,6 @@
 import React from "react";
 import Spinner from "../../shared/Spinner/Spinner";
+import TextViewItem from "../../shared/view/TextViewItem";
 
 function ContactView(props) {
   const { record, loading } = props;
