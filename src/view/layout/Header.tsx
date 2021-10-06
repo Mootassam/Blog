@@ -81,7 +81,7 @@ function Header() {
             className='nav-link dropdown-toggle nav-link-lg nav-link-user'>
             <img
               alt='image'
-              src='assets/img/avatar/avatar-1.png'
+              src='https://media.istockphoto.com/vectors/person-gray-photo-placeholder-man-vector-id1133765772?k=20&m=1133765772&s=612x612&w=0&h=2X073i6UQf9Z6NRxena3em12vhr7I7nromkZk4mfEmk='
               className='rounded-circle mr-1'
             />
             <div className='d-sm-none d-lg-inline-block'>
