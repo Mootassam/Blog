@@ -9,6 +9,7 @@ export function InputFormItem(props) {
     name,
     type,
     placeholder,
+    className,
     required,
     disabeld,
     externalErrorMessage,
@@ -27,7 +28,7 @@ export function InputFormItem(props) {
   );
 
   return (
-    <div className='form-group'>
+    <div className={className}>
       <label>{label}</label>
       <input
         name={name}
@@ -51,6 +52,7 @@ InputFormItem.defaultProps = {
   required: false,
 };
 InputFormItem.propTypes = {
+  className: PropTypes.string,
   label: PropTypes.string,
   name: PropTypes.string,
   placeholder: PropTypes.string,

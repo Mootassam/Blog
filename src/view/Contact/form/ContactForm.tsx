@@ -40,15 +40,27 @@ function ContactForm(props) {
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(OnSubmit)}>
         <div className='card-body'>
-          <InputFormItem label={"Name"} name={"name"} placeholder={"Name"} />
-          <InputFormItem name={"email"} label={"Email"} placeholder={"Email"} />
           <InputFormItem
+            className={"form-group"}
+            label={"Name"}
+            name={"name"}
+            placeholder={"Name"}
+          />
+          <InputFormItem
+            className={"form-group"}
+            name={"email"}
+            label={"Email"}
+            placeholder={"Email"}
+          />
+          <InputFormItem
+            className={"form-group"}
             name={"subject"}
             label={"Subject"}
             placeholder={"Subject"}
             required={true}
           />
           <TextAreaItem
+            className={"form-group mb-0"}
             name={"message"}
             label={"Message"}
             placeholder={"Message"}

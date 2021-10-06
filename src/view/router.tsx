@@ -22,8 +22,8 @@ const privateRoutes = [
     loader: () => import("src/view/Contact/view/ContactViewPage"),
   },
   {
-    path: "/about",
-    loader: () => import("src/view/About/list/aboutViewPage"),
+    path: "/profile",
+    loader: () => import("src/view/Auth/ProfileViewPage"),
   },
 ].filter(Boolean);
 const simpleRoutes = [

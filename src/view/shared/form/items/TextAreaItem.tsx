@@ -4,7 +4,7 @@ import { useFormContext } from "react-hook-form";
 import FormErrors from "../FormErrors";
 
 export function TextAreaItem(props) {
-  const { label, name, placeholder, required } = props;
+  const { className, label, name, placeholder, required } = props;
   const {
     register,
     errors,
@@ -17,7 +17,7 @@ export function TextAreaItem(props) {
     isSubmitted
   );
   return (
-    <div className='form-group mb-0'>
+    <div className={className}>
       <label>{label}</label>
       <textarea
         name={name}
@@ -34,6 +34,7 @@ TextAreaItem.defaultpropTypes = {
   required: false,
 };
 TextAreaItem.propTypes = {
+  className: PropTypes.string,
   label: PropTypes.string,
   name: PropTypes.string,
   placeholder: PropTypes.string,

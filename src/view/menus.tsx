@@ -40,7 +40,7 @@ export default [
     label: "Portfolio",
   },
   {
-    path: "/About",
+    path: "/profile",
     exact: true,
     icon: <FcAbout size={25} />,
     label: "About",

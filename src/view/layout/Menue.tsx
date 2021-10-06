@@ -43,7 +43,7 @@ function Menue() {
           <a
             href='https://getcodiepie.com/docs'
             className='btn btn-primary btn-lg btn-block btn-icon-split'>
-            <i className='fas fa-rocket'></i> Documentation
+            <i className='fas fa-rocket'></i> Download Resume
           </a>
         </div>
       </aside>
