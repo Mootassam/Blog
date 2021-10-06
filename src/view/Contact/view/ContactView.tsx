@@ -1,7 +1,6 @@
 import React from "react";
 import Spinner from "../../shared/Spinner/Spinner";
-import TextViewItem from "../../shared/view/TextViewItem";
-
+import Moment from "src/modules/shared/moment/Moment";
 function ContactView(props) {
   const { record, loading } = props;
   if (loading || !record) {
@@ -32,7 +31,7 @@ function ContactView(props) {
                       <div className='font-weight-600'>{record.name}</div>
                       <div className='bullet'></div>
                       <div className='text-primary font-weight-600'>
-                        2 min ago
+                        {Moment.ShowDateTime(`${record.updatedAt}`)}
                       </div>
                     </div>
                   </div>
