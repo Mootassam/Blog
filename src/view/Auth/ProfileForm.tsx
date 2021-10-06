@@ -7,7 +7,7 @@ import TextAreaItem from "../shared/form/items/TextAreaItem";
 import yupFormSchemas from "../../modules/shared/yup/yupFormSchemas";
 
 const schema = yup.object().shape({
-  poste: yupFormSchemas.string("poste", { required: true }),
+  role: yupFormSchemas.string("role", { required: true }),
   first_name: yupFormSchemas.string("first_name", { required: true }),
   last_name: yupFormSchemas.string("last_name", { required: true }),
   email: yupFormSchemas.string("email", { required: true }),
@@ -29,9 +29,9 @@ function ProfileForm() {
           <div className='row'>
             <InputFormItem
               className={"form-group col-md-12 col-12"}
-              label={"Poste"}
-              name={"poste"}
-              placeholder={"poste"}
+              label={"Role"}
+              name={"role"}
+              placeholder={"Role"}
             />
           </div>
           <div className='row'>

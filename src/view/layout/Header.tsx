@@ -1,6 +1,10 @@
 import React from "react";
 import { FcDoNotInhale, FcAssistant, FcSearch } from "react-icons/fc";
+import { getHistory } from "../../modules/store";
 function Header() {
+  const doNavigateToProfile = () => {
+    getHistory().push("/profile");
+  };
   return (
     <nav className='navbar navbar-expand-lg main-navbar'>
       <form className='form-inline mr-auto'></form>
@@ -90,20 +94,23 @@ function Header() {
           </a>
           <div className='dropdown-menu dropdown-menu-right'>
             <div className='dropdown-title'>Logged in 5 min ago</div>
-            <a href='features-profile.html' className='dropdown-item has-icon'>
-              <i className='far fa-user'></i> Profile
-            </a>
+            <button
+              onClick={doNavigateToProfile}
+              className='dropdown-item has-icon'>
+              Profile
+            </button>
+
             <a
               href='features-activities.html'
               className='dropdown-item has-icon'>
-              <i className='fas fa-bolt'></i> Activities
+              Activities
             </a>
             <a href='features-settings.html' className='dropdown-item has-icon'>
-              <i className='fas fa-cog'></i> Settings
+              Settings
             </a>
             <div className='dropdown-divider'></div>
             <a href='#' className='dropdown-item has-icon text-danger'>
-              <i className='fas fa-sign-out-alt'></i> Logout
+              Logout
             </a>
           </div>
         </li>
