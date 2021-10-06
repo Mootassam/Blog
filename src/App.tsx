@@ -4,7 +4,7 @@ import { configureStore, getHistory } from "src/modules/store";
 import { Provider } from "react-redux";
 import RoutesComponent from "src/view/routes/RoutesComponent";
 import jQuery from "jquery";
-
+import "bootstrap/js/src";
 (window as any).$ = (window as any).jQuery = jQuery;
 
 const store = configureStore();
