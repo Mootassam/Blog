@@ -14,6 +14,7 @@ const schema = yup.object().shape({
 function ContactForm(props) {
   const [initialValues] = useState(() => {
     const record = props.record || {};
+
     return {
       name: record.name,
       email: record.email,
@@ -27,7 +28,7 @@ function ContactForm(props) {
     defaultValues: initialValues,
   });
   const OnSubmit = (values) => {
-    props.onSubmit(values);
+    props.onSubmit(props.record?.id, values);
   };
   const onReset = () => {
     Object.keys(initialValues).forEach((key) => {
