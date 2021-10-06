@@ -14,6 +14,10 @@ const contactFormActions = {
   CREATED_SUCCESS: `${prefix}_CREATE_SUCCESS`,
   CREATED_ERROR: `${prefix}_CREATE_ERROR`,
 
+  UPDATED_STARTED: `${prefix}_UPDATED_STARTED`,
+  UPDATED_SUCCESS: `${prefix}_UPDATED_SUCCESS`,
+  UPDATED_ERROR: `${prefix}_UPDATED_ERROR`,
+
   doCreate: (values) => async (dispatch) => {
     try {
       dispatch({ type: contactFormActions.CREATE_STARTED });
@@ -39,6 +43,19 @@ const contactFormActions = {
       Errors.handle(error);
       dispatch({ type: contactFormActions.INIT_ERROR });
       getHistory().push("/contact");
+    }
+  },
+
+  doUpdate: (id, values) => async (dispatch) => {
+    try {
+      dispatch({ type: contactFormActions.UPDATED_STARTED });
+      await ContactService.update(id, values);
+      dispatch({ type: contactFormActions.UPDATED_SUCCESS });
+      Message.success("Updated is Successful");
+      getHistory().push("/contact");
+    } catch (error) {
+      Errors.handle(error);
+      dispatch({ type: contactFormActions.UPDATED_ERROR });
     }
   },
 };

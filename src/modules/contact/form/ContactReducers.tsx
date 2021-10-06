@@ -27,5 +27,15 @@ export default (state = initialData, { type, payload }) => {
     return { ...state, saveLoading: false };
   }
 
+  if (type === actions.UPDATED_STARTED) {
+    return { ...state, saveLoading: true };
+  }
+  if (type === actions.UPDATED_SUCCESS) {
+    return { ...state, saveLoading: false };
+  }
+  if (type === actions.UPDATED_ERROR) {
+    return { ...state, saveLoading: false };
+  }
+
   return state;
 };

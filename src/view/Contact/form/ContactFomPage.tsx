@@ -6,11 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { getHistory } from "../../../modules/store";
 import selectors from "src/modules/contact/form/ContactSelectors";
 import { useRouteMatch } from "react-router-dom";
-function FomContactPage(props) {
+import Spinner from "../../shared/Spinner/Spinner";
+function FomContactPage() {
   const [dispatched, setdispatched] = useState(false);
   const match = useRouteMatch();
   const record = useSelector(selectors.selectRecord);
-
   const saveLoading = useSelector(selectors.selectSaveLoading);
   const initLoading = useSelector(selectors.initLoading);
   const isEditing = Boolean(match.params.id);
@@ -20,8 +20,12 @@ function FomContactPage(props) {
     dispatch(actions.doInit(match.params.id));
     setdispatched(true);
   }, [dispatch, match.params.id]);
-  const doSubmit = (data) => {
-    dispatch(actions.doCreate(data));
+  const doSubmit = (id, data) => {
+    if (isEditing) {
+      dispatch(actions.doUpdate(id, data));
+    } else {
+      dispatch(actions.doCreate(data));
+    }
   };
   return (
     <section className='section'>
@@ -33,6 +37,7 @@ function FomContactPage(props) {
         <div className='row'>
           <div className='col-12 col-md-12 col-lg-12'>
             <div className='card'>
+              {initLoading && <Spinner />}
               {dispatched && !initLoading && (
                 <ContactForm
                   onSubmit={doSubmit}

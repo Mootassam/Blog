@@ -21,6 +21,10 @@ const privateRoutes = [
     path: "/contact/:id",
     loader: () => import("src/view/Contact/view/ContactViewPage"),
   },
+  {
+    path: "/about",
+    loader: () => import("src/view/About/list/aboutViewPage"),
+  },
 ].filter(Boolean);
 const simpleRoutes = [
   { path: "/500", loader: () => import("src/view/shared/errors/Error500page") },
