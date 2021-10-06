@@ -5,29 +5,21 @@ import { values } from "lodash";
 import { useDispatch, useSelector } from "react-redux";
 import { getHistory } from "../../../modules/store";
 import selectors from "src/modules/contact/form/ContactSelectors";
-function FomContactPage() {
+import { useRouteMatch } from "react-router-dom";
+function FomContactPage(props) {
+  const match = useRouteMatch();
+  const id = match.params.id;
+
   const saveLoading = useSelector(selectors.selectSaveLoading);
+  const Title = id ? "Edit Contact" : "Add Contact";
   const dispatch = useDispatch();
   const doSubmit = (data) => {
     dispatch(actions.doCreate(data));
   };
   return (
     <section className='section'>
-      <div className='section-header'>
-        <h1>Form Validation</h1>
-        <div className='section-header-breadcrumb'>
-          <div className='breadcrumb-item active'>
-            <a href='#'>Dashboard</a>
-          </div>
-          <div className='breadcrumb-item'>
-            <a href='#'>Forms</a>
-          </div>
-          <div className='breadcrumb-item'>Form Validation</div>
-        </div>
-      </div>
-
       <div className='section-body'>
-        <h2 className='section-title'>Form Validation</h2>
+        <h2 className='section-title'>{Title}</h2>
         <p className='section-lead'>
           Form validation using default from Bootstrap 4
         </p>

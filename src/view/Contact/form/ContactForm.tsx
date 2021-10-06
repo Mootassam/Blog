@@ -38,9 +38,6 @@ function ContactForm(props) {
   return (
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(OnSubmit)}>
-        <div className='card-header'>
-          <h4>Add New Contact</h4>
-        </div>
         <div className='card-body'>
           <InputFormItem label={"Name"} name={"name"} placeholder={"Name"} />
           <InputFormItem name={"email"} label={"Email"} placeholder={"Email"} />

@@ -10,9 +10,6 @@ function ContactView(props) {
     <div className='row'>
       <div className='col-md-12'>
         <div className='card'>
-          <div className='card-header'>
-            <h4>Detaill Contact</h4>
-          </div>
           <div className='card-body'>
             <a
               href='#'

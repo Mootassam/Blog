@@ -49,7 +49,7 @@ function ContactListTable(props) {
                 <td>{rows.email}</td>
                 <td>{rows.subject}</td>
                 <td>
-                  <Link to={`/contact/view/${rows.id}`}>
+                  <Link to={`/contact/${rows.id}`}>
                     <a href='#' className='btn btn-secondary'>
                       Detail
                     </a>

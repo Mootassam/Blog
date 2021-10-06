@@ -14,7 +14,11 @@ const privateRoutes = [
     loader: () => import("src/view/Contact/form/ContactFomPage"),
   },
   {
-    path: `/contact/view/:id`,
+    path: "/contact/:id/edit",
+    loader: () => import("src/view/Contact/form/ContactFomPage"),
+  },
+  {
+    path: "/contact/:id",
     loader: () => import("src/view/Contact/view/ContactViewPage"),
   },
 ].filter(Boolean);

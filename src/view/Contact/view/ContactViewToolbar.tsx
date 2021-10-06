@@ -1,10 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
+function ContactViewToolbar(props) {
+  const id = props.match.params.id;
 
-function ContactViewToolbar() {
   return (
     <>
-      <h2 className='section-title'>Help Your Customer</h2>
-      <p className='section-lead'>Some customers need your help.</p>
+      <h2 className='section-title'>
+        <Link to={`/contact/${id}/edit/`}>
+          <button className='btn btn-primary'>Edit Contact</button>
+        </Link>
+      </h2>
     </>
   );
 }
