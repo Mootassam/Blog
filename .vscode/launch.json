@@ -1,0 +1,18 @@
+{
+  "configurations": [
+    
+    {
+      "type": "firefox",
+      "request": "launch",
+      "reAttach": true,
+      "name": "Launch add-on",
+      "addonPath": "${workspaceFolder}"
+    },
+    {
+      "name": "Launch Microsoft Edge and open the Edge DevTools",
+      "request": "launch",
+      "type": "vscode-edge-devtools.debug",
+      "url": "http://localhost:3000" // Provide your project's url to finish configuring
+    }
+  ]
+}

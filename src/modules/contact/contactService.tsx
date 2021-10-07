@@ -8,7 +8,7 @@ export default class ContactService {
     };
 
     const response = await authAxios.put(
-      `/tenant/6158eb7bfee43bf1fe07daf2/contact/${id}`,
+      `/tenant/615f3b4e4ca08f6d8056f95c/contact/${id}`,
       body
     );
 
@@ -21,7 +21,7 @@ export default class ContactService {
     };
 
     const response = await authAxios.delete(
-      `/tenant/6158eb7bfee43bf1fe07daf2/contact`,
+      `/tenant/615f3b4e4ca08f6d8056f95c/contact`,
       {
         params,
       }
@@ -36,7 +36,7 @@ export default class ContactService {
     };
 
     const response = await authAxios.post(
-      `/tenant/6158eb7bfee43bf1fe07daf2/contact`,
+      `/tenant/615f3b4e4ca08f6d8056f95c/contact`,
       body
     );
 
@@ -50,7 +50,7 @@ export default class ContactService {
     };
 
     const response = await authAxios.post(
-      `/tenant/6158eb7bfee43bf1fe07daf2/contact/import`,
+      `/tenant/615f3b4e4ca08f6d8056f95c/contact/import`,
       body
     );
 
@@ -59,7 +59,7 @@ export default class ContactService {
 
   static async find(id) {
     const response = await authAxios.get(
-      `/tenant/6158eb7bfee43bf1fe07daf2/contact/${id}`
+      `/tenant/615f3b4e4ca08f6d8056f95c/contact/${id}`
     );
 
     return response.data;
@@ -67,7 +67,7 @@ export default class ContactService {
 
   static async list() {
     const response = await authAxios.get(
-      `/tenant/6158eb7bfee43bf1fe07daf2/contact`
+      `/tenant/615f3b4e4ca08f6d8056f95c/contact`
     );
 
     return response.data;
@@ -80,7 +80,7 @@ export default class ContactService {
   //   };
 
   //   const response = await authAxios.get(
-  //     `/tenant/6158eb7bfee43bf1fe07daf2/contact/autocomplete`,
+  //     `/tenant/615f3b4e4ca08f6d8056f95c/contact/autocomplete`,
   //     {
   //       params,
   //     }

@@ -25,6 +25,10 @@ const privateRoutes = [
     path: "/profile",
     loader: () => import("src/view/Auth/ProfileViewPage"),
   },
+  {
+    path: "/education",
+    loader: () => import("src/view/Education/list/EducationLisPage"),
+  },
 ].filter(Boolean);
 const simpleRoutes = [
   { path: "/500", loader: () => import("src/view/shared/errors/Error500page") },
