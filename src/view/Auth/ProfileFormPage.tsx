@@ -1,11 +1,17 @@
 import React from "react";
 import ProfileForm from "./ProfileForm";
+import actions from "src/modules/auth/authActions";
+import { useSelector, useDispatch } from "react-redux";
 
 function AboutFormPage() {
+  const dispatch = useDispatch();
+  const onSubmit = (data) => {
+    dispatch(actions.updateProfile(data));
+  };
   return (
     <div className='col-12 col-md-12 col-lg-7'>
       <div className='card'>
-        <ProfileForm />
+        <ProfileForm onSubmit={onSubmit} />
       </div>
     </div>
   );

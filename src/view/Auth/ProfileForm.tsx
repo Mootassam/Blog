@@ -13,8 +13,9 @@ const schema = yup.object().shape({
   email: yupFormSchemas.string("email", { required: true }),
   object: yupFormSchemas.string("object", { required: true }),
 });
-function ProfileForm() {
-  const onSumbit = () => {
+function ProfileForm(props) {
+  const onSumbit = (values) => {
+    props.onSubmit(values);
     alert("Validation Success");
   };
   const form = useForm({
