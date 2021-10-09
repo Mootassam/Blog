@@ -30,6 +30,18 @@ const privateRoutes = [
     loader: () => import("src/view/Education/list/EducationLisPage"),
   },
 ].filter(Boolean);
+
+const publicRoutes = [
+  {
+    path: "/auth/signin",
+    loader: () => import("src/view/Auth/SiginPage"),
+  },
+  {
+    path: "/auth/signup",
+    loader: () => import("src/view/Auth/SingupPage"),
+  },
+].filter(Boolean);
+
 const simpleRoutes = [
   { path: "/500", loader: () => import("src/view/shared/errors/Error500page") },
   { path: "/403", loader: () => import("src/view/shared/errors/Error403Page") },
@@ -37,5 +49,6 @@ const simpleRoutes = [
 ];
 export default {
   privateRoutes,
+  publicRoutes,
   simpleRoutes,
 };

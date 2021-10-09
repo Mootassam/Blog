@@ -22,7 +22,7 @@ const authAxios = Axios.create({
 authAxios.interceptors.request.use(
   async function (options) {
     const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNWYzYjRlNGNhMDhmNmQ4MDU2Zjk1YSIsImlhdCI6MTYzMzYzMTA1NCwiZXhwIjoxNjM0MjM1ODU0fQ.6Rn2QZ10GEZ84ijCeOPhkag3y6RxBzIrwSEgL4M4G1Y";
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNjBhY2Q5ZmFhMzVkN2QzZDhjYmY3ZCIsImlhdCI6MTYzMzcyNTg2MCwiZXhwIjoxNjM0MzMwNjYwfQ.wLGPZP-E5VIXACXHb__WplaEvC40tLHYJZuJy2YYfbk";
 
     if (token) {
       options.headers["Authorization"] = `Bearer ${token}`;
