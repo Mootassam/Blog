@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useForm, FormProvider } from "react-hook-form";
+import InputFormItem from "../shared/form/items/InputFormItem";
 function SiginPage() {
+  const form = useForm({});
   return (
     <section className='section'>
       <div className='container mt-5'>
@@ -19,63 +22,43 @@ function SiginPage() {
                 <h4>Login</h4>
               </div>
               <div className='card-body'>
-                <form>
-                  <div className='form-group'>
-                    <label>Email</label>
-                    <input
-                      id='email'
-                      type='email'
-                      className='form-control'
-                      name='email'
-                      required
+                <FormProvider {...form}>
+                  <form>
+                    <InputFormItem
+                      className={"form-group"}
+                      label={"Email"}
+                      name={"email"}
+                      placeholder={"Email"}
                     />
-                    <div className='invalid-feedback'>
-                      Please fill in your email
-                    </div>
-                  </div>
-                  <div className='form-group'>
-                    <div className='d-block'>
-                      <label className='control-label'>Password</label>
-                      <div className='float-right'>
-                        <a
-                          href='auth-forgot-password.html'
-                          className='text-small'>
-                          Forgot Password?
-                        </a>
+                    <InputFormItem
+                      className={"form-group"}
+                      label={"Password"}
+                      name={"password"}
+                      placeholder={"Password"}
+                    />
+
+                    {/* <div className='form-group'>
+                      <div className='custom-control custom-checkbox'>
+                        <input
+                          type='checkbox'
+                          name='remember'
+                          className='custom-control-input'
+                          id='remember-me'
+                        />
+                        <label className='custom-control-label'>
+                          Remember Me
+                        </label>
                       </div>
+                    </div> */}
+                    <div className='form-group'>
+                      <button
+                        type='submit'
+                        className='btn btn-primary btn-lg btn-block'>
+                        Login
+                      </button>
                     </div>
-                    <input
-                      id='password'
-                      type='password'
-                      className='form-control'
-                      name='password'
-                      required
-                    />
-                    <div className='invalid-feedback'>
-                      please fill in your password
-                    </div>
-                  </div>
-                  <div className='form-group'>
-                    <div className='custom-control custom-checkbox'>
-                      <input
-                        type='checkbox'
-                        name='remember'
-                        className='custom-control-input'
-                        id='remember-me'
-                      />
-                      <label className='custom-control-label'>
-                        Remember Me
-                      </label>
-                    </div>
-                  </div>
-                  <div className='form-group'>
-                    <button
-                      type='submit'
-                      className='btn btn-primary btn-lg btn-block'>
-                      Login
-                    </button>
-                  </div>
-                </form>
+                  </form>
+                </FormProvider>
               </div>
             </div>
             <div className='mt-5 text-muted text-center'>
