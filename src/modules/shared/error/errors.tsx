@@ -34,6 +34,13 @@ export default class Errors {
     }
     getHistory().push("/500");
   }
+  static errorCode(error) {
+    return selectErrorCode(error);
+  }
+  static selectMessage(error) {
+    return selectErrorMessage(error);
+  }
+
   static showMessage(error) {
     Message.error(selectErrorMessage(error));
   }

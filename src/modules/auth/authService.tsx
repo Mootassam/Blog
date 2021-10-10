@@ -1,4 +1,5 @@
 import authAxios from "src/modules/shared/axios/authAxios";
+import { AuthToken } from "./AuhtToken";
 // import { AuthToken } from "src/modules/auth/authToken";
 // import AuthCurrentTenant from "src/modules/auth/authCurrentTenant";
 // import AuthInvitationToken from "src/modules/auth/authInvitationToken";
@@ -64,9 +65,9 @@ export default class AuthService {
     return response.data;
   }
 
-  //   static signout() {
-  //     AuthToken.set(null, true);
-  //   }
+  static signout() {
+    AuthToken.set(null, true);
+  }
 
   static async updateProfile(data) {
     const body = {

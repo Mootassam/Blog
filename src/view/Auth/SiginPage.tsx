@@ -5,11 +5,14 @@ import InputFormItem from "../shared/form/items/InputFormItem";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import yupFormSchemas from "../../modules/shared/yup/yupFormSchemas";
+import { useDispatch } from "react-redux";
+import actions from "src/modules/auth/authActions";
 const schema = yup.object().shape({
   email: yupFormSchemas.string("email", { required: true }),
   password: yupFormSchemas.string("password", { required: true }),
 });
 function SiginPage() {
+  const dispatch = useDispatch();
   const [initialValues] = useState({
     email: "",
     password: "",
@@ -20,8 +23,8 @@ function SiginPage() {
     mode: "all",
     defaultValues: initialValues,
   });
-  const siginWihtPasswordAndEmail = () => {
-    alert("im Will be Rich this year");
+  const siginWihtPasswordAndEmail = ({ email, password }) => {
+    dispatch(actions.doSiginWithEmailAndPassword(email, password));
   };
   return (
     <section className='section'>
@@ -53,6 +56,7 @@ function SiginPage() {
                       className={"form-group"}
                       label={"Password"}
                       name={"password"}
+                      type='password'
                       placeholder={"Password"}
                     />
 

@@ -15,16 +15,24 @@ const authActions = {
   doSiginWithEmailAndPassword: (email, password) => async (dispatch) => {
     try {
       dispatch({ type: authActions.AUTH_START });
-      let curentUser = null;
+      let currentUser = null;
       const token = await AuthService.signinWithEmailAndPassword(
         email,
         password
       );
       AuthToken.set(token, true);
-      const currentUser = await AuthService.fetchMe();
+      currentUser = await AuthService.fetchMe();
       dispatch({ type: authActions.AUTH_SUCCESS, payload: { currentUser } });
-    } catch (error) {}
-    dispatch({ type: authActions.AUTH_ERROR });
+    } catch (error) {
+      await AuthService.signout();
+      if (Errors.errorCode(error) !== 400) {
+        Errors.handle(error);
+      }
+      dispatch({
+        type: authActions.AUTH_ERROR,
+        payload: Errors.selectMessage(error),
+      });
+    }
   },
   doSiginupWithEmailAndPassword: () => async (dispatch) => {},
 

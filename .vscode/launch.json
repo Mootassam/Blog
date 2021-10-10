@@ -2,16 +2,11 @@
   "version": "0.1.0",
   "configurations": [
     {
-      "type": "devtools-for-chrome",
-      "request": "launch",
-      "name": "Launch Chrome DevTools",
-      "file": "http://localhost:3000/"
-    },
-    {
-      "type": "devtools-for-chrome",
+      "name": "Attach to Chrome",
+      "port": 9222,
       "request": "attach",
-      "name": "Attach Chrome DevTools",
-      "url": "http://localhost:3000/"
+      "type": "pwa-chrome",
+      "webRoot": "${workspaceFolder}"
     }
   ]
 }
