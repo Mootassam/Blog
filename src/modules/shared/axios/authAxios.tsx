@@ -2,6 +2,7 @@ import Axios from "axios";
 
 import Qs from "qs";
 import moment from "moment";
+import { AuthToken } from "../../auth/AuhtToken";
 
 const authAxios = Axios.create({
   baseURL: "http://localhost:8080/api",
@@ -21,8 +22,7 @@ const authAxios = Axios.create({
 
 authAxios.interceptors.request.use(
   async function (options) {
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNjBhY2Q5ZmFhMzVkN2QzZDhjYmY3ZCIsImlhdCI6MTYzMzcyNTg2MCwiZXhwIjoxNjM0MzMwNjYwfQ.wLGPZP-E5VIXACXHb__WplaEvC40tLHYJZuJy2YYfbk";
+    const token = AuthToken.get();
 
     if (token) {
       options.headers["Authorization"] = `Bearer ${token}`;
