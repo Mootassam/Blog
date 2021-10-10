@@ -1,12 +1,32 @@
 import Message from "../../view/shared/messages";
 import Errors from "../shared/error/errors";
+import { AuthToken } from "./AuhtToken";
 import AuthService from "./authService";
 
-const prefix = "PROFILE_FORM";
+const prefix = "AUTH";
 const authActions = {
   UPDATED_STARTED: `${prefix}_UPDATED_STARTED`,
   UPDATED_SUCCESS: `${prefix}_UPDATED_SUCCESS`,
   UPDATED_ERROR: `${prefix}_UPDATED_ERROR`,
+  AUTH_START: `${prefix}_AUTH_START`,
+  AUTH_SUCCESS: `${prefix}_AUTH_SUCCESS`,
+  AUTH_ERROR: `${prefix}_AUTH_ERROR`,
+
+  doSiginWithEmailAndPassword: (email, password) => async (dispatch) => {
+    try {
+      dispatch({ type: authActions.AUTH_START });
+      let curentUser = null;
+      const token = await AuthService.signinWithEmailAndPassword(
+        email,
+        password
+      );
+      AuthToken.set(token, true);
+      const currentUser = await AuthService.fetchMe();
+      dispatch({ type: authActions.AUTH_SUCCESS, payload: { currentUser } });
+    } catch (error) {}
+    dispatch({ type: authActions.AUTH_ERROR });
+  },
+  doSiginupWithEmailAndPassword: () => async (dispatch) => {},
 
   updateProfile: (values) => async (disptach) => {
     try {

@@ -46,22 +46,18 @@ export default class AuthService {
   //     return response.data;
   //   }
 
-  //   static async signinWithEmailAndPassword(email, password) {
-  //     const invitationToken = AuthInvitationToken.get();
+  static async signinWithEmailAndPassword(email, password) {
+    // const invitationToken = AuthInvitationToken.get();
 
-  //     const response = await authAxios.post("/auth/sign-in", {
-  //       email,
-  //       password,
-  //       invitationToken,
-  //       tenantId: tenantSubdomain.isSubdomain
-  //         ? AuthCurrentTenant.get()
-  //         : undefined,
-  //     });
+    const response = await authAxios.post("/auth/sign-in", {
+      email,
+      password,
+    });
 
-  //     AuthInvitationToken.clear();
+    // AuthInvitationToken.clear();
 
-  //     return response.data;
-  //   }
+    return response.data;
+  }
 
   static async fetchMe() {
     const response = await authAxios.get("/auth/me");

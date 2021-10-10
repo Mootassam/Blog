@@ -1,9 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm, FormProvider } from "react-hook-form";
 import InputFormItem from "../shared/form/items/InputFormItem";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import yupFormSchemas from "../../modules/shared/yup/yupFormSchemas";
+const schema = yup.object().shape({
+  email: yupFormSchemas.string("email", { required: true }),
+  password: yupFormSchemas.string("password", { required: true }),
+});
 function SiginPage() {
-  const form = useForm({});
+  const [initialValues] = useState({
+    email: "",
+    password: "",
+    rememberMe: true,
+  });
+  const form = useForm({
+    resolver: yupResolver(schema),
+    mode: "all",
+    defaultValues: initialValues,
+  });
+  const siginWihtPasswordAndEmail = () => {
+    alert("im Will be Rich this year");
+  };
   return (
     <section className='section'>
       <div className='container mt-5'>
@@ -23,7 +42,7 @@ function SiginPage() {
               </div>
               <div className='card-body'>
                 <FormProvider {...form}>
-                  <form>
+                  <form onSubmit={form.handleSubmit(siginWihtPasswordAndEmail)}>
                     <InputFormItem
                       className={"form-group"}
                       label={"Email"}
