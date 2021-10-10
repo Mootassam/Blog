@@ -10,17 +10,6 @@ function RoutesComponent(props) {
   const currentUser = useSelector(selectors.currentUser);
   return (
     <Switch>
-      {routes.privateRoutes.map((route) => (
-        <PrivateRoutes
-          exact
-          key={route.path}
-          path={route.path}
-          currentUser={currentUser}
-          component={CustomLoadable({
-            loader: route.loader,
-          })}
-        />
-      ))}
       {routes.publicRoutes.map((route) => (
         <PublicRoutes
           exact
@@ -32,6 +21,18 @@ function RoutesComponent(props) {
           })}
         />
       ))}
+      {routes.privateRoutes.map((route) => (
+        <PrivateRoutes
+          exact
+          key={route.path}
+          path={route.path}
+          currentUser={currentUser}
+          component={CustomLoadable({
+            loader: route.loader,
+          })}
+        />
+      ))}
+
       {routes.simpleRoutes.map((route) => (
         <Route
           key={route.path}
