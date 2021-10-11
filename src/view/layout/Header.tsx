@@ -1,9 +1,15 @@
 import React from "react";
 import { FcDoNotInhale, FcAssistant, FcSearch } from "react-icons/fc";
 import { getHistory } from "../../modules/store";
+import actions from "src/modules/auth/authActions";
+import { useDispatch } from "react-redux";
 function Header() {
+  const dispatch = useDispatch();
   const doNavigateToProfile = () => {
     getHistory().push("/profile");
+  };
+  const doSignout = () => {
+    dispatch(actions.doSignout());
   };
   return (
     <nav className='navbar navbar-expand-lg main-navbar'>
@@ -109,9 +115,9 @@ function Header() {
               Settings
             </a>
             <div className='dropdown-divider'></div>
-            <a href='#' className='dropdown-item has-icon text-danger'>
-              Logout
-            </a>
+            <button onClick={doSignout}>
+              <a className='dropdown-item has-icon text-danger'>Logout</a>
+            </button>
           </div>
         </li>
       </ul>

@@ -35,6 +35,19 @@ const authActions = {
     }
   },
   doSiginupWithEmailAndPassword: () => async (dispatch) => {},
+  doSignout: () => async (dispatch) => {
+    try {
+      dispatch({ type: authActions.AUTH_START });
+      await AuthService.signout();
+      dispatch({
+        type: authActions.AUTH_SUCCESS,
+        payload: { currentUser: null },
+      });
+    } catch (error) {
+      Errors.handle(error);
+      dispatch({ type: authActions.AUTH_ERROR });
+    }
+  },
 
   updateProfile: (values) => async (disptach) => {
     try {
