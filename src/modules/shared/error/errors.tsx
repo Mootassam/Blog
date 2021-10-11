@@ -12,7 +12,7 @@ function selectErrorKeyOrMessage(error) {
 }
 
 function selectErrorMessage(error) {
-  const key = selectErrorCode(error);
+  const key = selectErrorKeyOrMessage(error);
   return key;
 }
 function selectErrorCode(error) {
@@ -37,6 +37,7 @@ export default class Errors {
   static errorCode(error) {
     return selectErrorCode(error);
   }
+
   static selectMessage(error) {
     return selectErrorMessage(error);
   }
