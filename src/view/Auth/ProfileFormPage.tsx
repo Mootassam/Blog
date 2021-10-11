@@ -4,9 +4,6 @@ import actions from "src/modules/auth/authActions";
 import { useSelector, useDispatch } from "react-redux";
 
 function AboutFormPage() {
-  console.log("====================================");
-  console.log("im the best in the world");
-  console.log("====================================");
   const dispatch = useDispatch();
   const onSubmit = (data) => {
     dispatch(actions.updateProfile(data));
