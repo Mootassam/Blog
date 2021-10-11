@@ -6,7 +6,7 @@ import CustomLoadable from "../shared/CustomLoadable";
 import PublicRoutes from "./PublicRoutes";
 import selectors from "src/modules/auth/authSelectors";
 import { useSelector } from "react-redux";
-function RoutesComponent(props) {
+function RoutesComponent() {
   const currentUser = useSelector(selectors.currentUser);
   return (
     <Switch>
@@ -23,16 +23,15 @@ function RoutesComponent(props) {
       ))}
       {routes.privateRoutes.map((route) => (
         <PrivateRoutes
-          exact
           key={route.path}
           path={route.path}
           currentUser={currentUser}
           component={CustomLoadable({
             loader: route.loader,
           })}
+          exact={Boolean(route.exact)}
         />
       ))}
-
       {routes.simpleRoutes.map((route) => (
         <Route
           key={route.path}

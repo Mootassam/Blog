@@ -5,13 +5,15 @@ import InputFormItem from "../shared/form/items/InputFormItem";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import yupFormSchemas from "../../modules/shared/yup/yupFormSchemas";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import actions from "src/modules/auth/authActions";
+import selectors from "src/modules/auth/authSelectors";
 const schema = yup.object().shape({
   email: yupFormSchemas.string("email", { required: true }),
   password: yupFormSchemas.string("password", { required: true }),
 });
 function SiginPage() {
+  const externalErrorMessage = useSelector(selectors.selectErrorMessage);
   const dispatch = useDispatch();
   const [initialValues] = useState({
     email: "",
@@ -23,8 +25,8 @@ function SiginPage() {
     mode: "all",
     defaultValues: initialValues,
   });
-  const siginWihtPasswordAndEmail = ({ email, password }) => {
-    dispatch(actions.doSiginWithEmailAndPassword(email, password));
+  const siginWihtPasswordAndEmail = ({ email, password, rememberMe }) => {
+    dispatch(actions.doSiginWithEmailAndPassword(email, password, rememberMe));
   };
   return (
     <section className='section'>
@@ -51,6 +53,7 @@ function SiginPage() {
                       label={"Email"}
                       name={"email"}
                       placeholder={"Email"}
+                      externalErrorMessage={externalErrorMessage}
                     />
                     <InputFormItem
                       className={"form-group"}
@@ -60,19 +63,16 @@ function SiginPage() {
                       placeholder={"Password"}
                     />
 
-                    {/* <div className='form-group'>
-                      <div className='custom-control custom-checkbox'>
-                        <input
-                          type='checkbox'
-                          name='remember'
-                          className='custom-control-input'
-                          id='remember-me'
-                        />
-                        <label className='custom-control-label'>
-                          Remember Me
-                        </label>
-                      </div>
-                    </div> */}
+                    <div className='form-check'>
+                      <input
+                        className='form-control'
+                        type='checkbox'
+                        id={"rememberMe"}
+                        name={"rememberMe"}
+                        ref={form.register}
+                      />
+                      Remember Me
+                    </div>
                     <div className='form-group'>
                       <button
                         type='submit'

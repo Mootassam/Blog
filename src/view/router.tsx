@@ -4,30 +4,37 @@ const privateRoutes = [
   {
     path: "/",
     loader: () => import("src/view/Dashboard/DashboardPage"),
+    exact: true,
   },
   {
     path: "/contact",
     loader: () => import("src/view/Contact/list/ListContactPage"),
+    exact: true,
   },
   {
     path: "/contact/new",
     loader: () => import("src/view/Contact/form/ContactFomPage"),
+    exact: true,
   },
   {
     path: "/contact/:id/edit",
     loader: () => import("src/view/Contact/form/ContactFomPage"),
+    exact: true,
   },
   {
     path: "/contact/:id",
     loader: () => import("src/view/Contact/view/ContactViewPage"),
+    exact: true,
   },
   {
     path: "/profile",
     loader: () => import("src/view/Auth/ProfileViewPage"),
+    exact: true,
   },
   {
     path: "/education",
     loader: () => import("src/view/Education/list/EducationLisPage"),
+    exact: true,
   },
 ].filter(Boolean);
 

@@ -6,7 +6,7 @@ function ProfileViewPage() {
   return (
     <section className='section'>
       <div className='section-body'>
-        <h2 className='section-title'>Hi, Michelle!</h2>
+        <h2 className='section-title'>Upadate your profile</h2>
         <p className='section-lead'>
           Change information about yourself on this page.
         </p>

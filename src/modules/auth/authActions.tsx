@@ -12,28 +12,29 @@ const authActions = {
   AUTH_SUCCESS: `${prefix}_AUTH_SUCCESS`,
   AUTH_ERROR: `${prefix}_AUTH_ERROR`,
 
-  doSiginWithEmailAndPassword: (email, password) => async (dispatch) => {
-    try {
-      dispatch({ type: authActions.AUTH_START });
-      let currentUser = null;
-      const token = await AuthService.signinWithEmailAndPassword(
-        email,
-        password
-      );
-      AuthToken.set(token, true);
-      currentUser = await AuthService.fetchMe();
-      dispatch({ type: authActions.AUTH_SUCCESS, payload: { currentUser } });
-    } catch (error) {
-      await AuthService.signout();
-      if (Errors.errorCode(error) !== 400) {
-        Errors.handle(error);
+  doSiginWithEmailAndPassword:
+    (email, password, rememberMe) => async (dispatch) => {
+      try {
+        dispatch({ type: authActions.AUTH_START });
+        let currentUser = null;
+        const token = await AuthService.signinWithEmailAndPassword(
+          email,
+          password
+        );
+        AuthToken.set(token, rememberMe);
+        currentUser = await AuthService.fetchMe();
+        dispatch({ type: authActions.AUTH_SUCCESS, payload: { currentUser } });
+      } catch (error) {
+        await AuthService.signout();
+        if (Errors.errorCode(error) !== 400) {
+          Errors.handle(error);
+        }
+        dispatch({
+          type: authActions.AUTH_ERROR,
+          payload: Errors.selectMessage(error),
+        });
       }
-      dispatch({
-        type: authActions.AUTH_ERROR,
-        payload: Errors.selectMessage(error),
-      });
-    }
-  },
+    },
   doSiginupWithEmailAndPassword: () => async (dispatch) => {},
   doSignout: () => async (dispatch) => {
     try {

@@ -12,7 +12,10 @@ function PrivateRoutes({ component: Component, currentUser, ...rest }) {
         if (!permissionChecker.isAuthenticated) {
           return (
             <Redirect
-              to={{ pathname: "/auth/signin", state: { from: location } }}
+              to={{
+                pathname: "/auth/signin",
+                state: { from: location },
+              }}
             />
           );
         }
