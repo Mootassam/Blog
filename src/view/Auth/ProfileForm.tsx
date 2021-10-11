@@ -23,11 +23,11 @@ function ProfileForm(props) {
       firstName: record.firstName,
       lastName: record.lastName,
       email: record.email,
-      object: record.object,
-      github: record.github,
-      linkedin: record.linkedin,
       phone: record.phoneNumber,
+      linkedin: record.linkedin,
+      github: record.github,
       site: record.site,
+      object: record.object,
     };
   });
   const onSumbit = (values) => {

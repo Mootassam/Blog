@@ -48,12 +48,26 @@ const authActions = {
       dispatch({ type: authActions.AUTH_ERROR });
     }
   },
+  doRefreshCurrentUser: () => async (dispatch) => {
+    try {
+      dispatch({ type: authActions.AUTH_START });
 
+      let currentUser = null;
+      const token = AuthToken.get();
+      if (token) {
+        currentUser = await AuthService.fetchMe();
+      }
+      dispatch({ type: authActions.AUTH_SUCCESS, payload: { currentUser } });
+    } catch (error) {
+      dispatch({ type: authActions.AUTH_ERROR });
+    }
+  },
   updateProfile: (values) => async (disptach) => {
     try {
       disptach({ type: authActions.UPDATED_STARTED });
       await AuthService.updateProfile(values);
       disptach({ type: authActions.UPDATED_SUCCESS });
+      await disptach(authActions.doRefreshCurrentUser());
       Message.success(" Profile updated with success");
     } catch (error) {
       Errors.handle(error);
