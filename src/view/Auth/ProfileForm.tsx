@@ -1,27 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import InputFormItem from "src/view/shared/form/items/InputFormItem";
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import TextAreaItem from "../shared/form/items/TextAreaItem";
 import yupFormSchemas from "../../modules/shared/yup/yupFormSchemas";
-
+import { useSelector, useDispatch } from "react-redux";
+import selectors from "src/modules/auth/authSelectors";
 const schema = yup.object().shape({
   role: yupFormSchemas.string("role", { required: true }),
-  first_name: yupFormSchemas.string("first_name", { required: true }),
-  last_name: yupFormSchemas.string("last_name", { required: true }),
+  firstName: yupFormSchemas.string("firstName", { required: true }),
+  lastName: yupFormSchemas.string("lastName", { required: true }),
   email: yupFormSchemas.string("email", { required: true }),
   object: yupFormSchemas.string("object", { required: true }),
 });
 function ProfileForm(props) {
+  const currentUser = useSelector(selectors.currentUser);
+  const [intialData] = useState(() => {
+    const record = currentUser || {};
+    return {
+      role: record.role,
+      firstName: record.firstName,
+      lastName: record.lastName,
+      email: record.email,
+      object: record.object,
+      github: record.github,
+      linkedin: record.linkedin,
+      phone: record.phoneNumber,
+      site: record.site,
+    };
+  });
   const onSumbit = (values) => {
     props.onSubmit(values);
-    alert("Validation Success");
   };
   const form = useForm({
     resolver: yupResolver(schema),
     mode: "all",
-    defaultValues: {},
+    defaultValues: intialData,
   });
   return (
     <FormProvider {...form}>
@@ -39,14 +54,14 @@ function ProfileForm(props) {
             <InputFormItem
               className={"form-group col-md-6 col-12"}
               label={"First Name"}
-              name={"first_name"}
+              name={"firstName"}
               placeholder={"Name"}
             />
 
             <InputFormItem
               className={"form-group col-md-6 col-12"}
               label={"last Name"}
-              name={"last_name"}
+              name={"lastName"}
               placeholder={"last_name"}
             />
           </div>

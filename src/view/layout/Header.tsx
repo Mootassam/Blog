@@ -115,8 +115,10 @@ function Header() {
               Settings
             </a>
             <div className='dropdown-divider'></div>
-            <button onClick={doSignout}>
-              <a className='dropdown-item has-icon text-danger'>Logout</a>
+            <button
+              className='dropdown-item has-icon text-danger'
+              onClick={doSignout}>
+              Logout
             </button>
           </div>
         </li>
