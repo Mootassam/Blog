@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import InputFormItem from "../shared/form/items/InputFormItem";
@@ -15,6 +15,9 @@ const schema = yup.object().shape({
 function SingupPage() {
   const dispatch = useDispatch();
   const externalErrorMessage = useSelector(selectors.selectErrorMessage);
+  useEffect(() => {
+    dispatch(actions.doClearErrorMessage());
+  }, [dispatch]);
   const onSubmit = ({ email, password }) => {
     dispatch(actions.doSiginupWithEmailAndPassword(email, password));
   };

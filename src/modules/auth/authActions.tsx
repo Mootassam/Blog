@@ -5,6 +5,7 @@ import AuthService from "./authService";
 
 const prefix = "AUTH";
 const authActions = {
+  ERROR_MESSAGE_CLEARED: `${prefix}_ERROR_MESSAGE_CLEARED`,
   UPDATED_STARTED: `${prefix}_UPDATED_STARTED`,
   UPDATED_SUCCESS: `${prefix}_UPDATED_SUCCESS`,
   UPDATED_ERROR: `${prefix}_UPDATED_ERROR`,
@@ -13,6 +14,12 @@ const authActions = {
   AUTH_ERROR: `${prefix}_AUTH_ERROR`,
   AUTH_INIT_SUCCESS: `${prefix}_AUTH_INIT_SUCCESS`,
   AUTH_INIT_ERROR: `${prefix}_AUTH_INIT_ERROR`,
+
+  doClearErrorMessage() {
+    return {
+      type: authActions.ERROR_MESSAGE_CLEARED,
+    };
+  },
 
   doSiginWithEmailAndPassword:
     (email, password, rememberMe) => async (dispatch) => {

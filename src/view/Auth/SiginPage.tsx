@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useForm, FormProvider } from "react-hook-form";
 import InputFormItem from "../shared/form/items/InputFormItem";
@@ -15,6 +15,9 @@ const schema = yup.object().shape({
 function SiginPage() {
   const externalErrorMessage = useSelector(selectors.selectErrorMessage);
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(actions.doClearErrorMessage());
+  }, [dispatch]);
   const [initialValues] = useState({
     email: "",
     password: "",

@@ -11,6 +11,9 @@ const initialState = {
 };
 
 export default (state = initialState, { type, payload }) => {
+  if (type === actions.ERROR_MESSAGE_CLEARED) {
+    return { ...state, errorMessage: null };
+  }
   if (type === actions.AUTH_START) {
     return { ...state, loading: true, errorMessage: null };
   }
