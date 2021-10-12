@@ -2,9 +2,20 @@ import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import InputFormItem from "../shared/form/items/InputFormItem";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import yupFormSchemas from "../../modules/shared/yup/yupFormSchemas";
+const schema = yup.object().shape({
+  email: yupFormSchemas.string("email", { required: true }),
+  password: yupFormSchemas.string("password", { required: true }),
+});
 function SingupPage() {
   const onSubmit = () => {};
-  const form = useForm({});
+  const form = useForm({
+    resolver: yupResolver(schema),
+    mode: "all",
+    defaultValues: {},
+  });
   return (
     <section className='section'>
       <div className='container mt-5'>
@@ -24,12 +35,12 @@ function SingupPage() {
               </div>
               <div className='card-body'>
                 <FormProvider {...form}>
-                  <form>
+                  <form onSubmit={form.handleSubmit(onSubmit)}>
                     <div className='row'>
                       <InputFormItem
                         className={"form-group col-6"}
                         label={"Email"}
-                        name={"Email"}
+                        name={"email"}
                         placeholder={"Email"}
                       />
                       <InputFormItem
