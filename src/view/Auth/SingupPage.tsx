@@ -5,12 +5,19 @@ import InputFormItem from "../shared/form/items/InputFormItem";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import yupFormSchemas from "../../modules/shared/yup/yupFormSchemas";
+import actions from "src/modules/auth/authActions";
+import selectors from "src/modules/auth/authSelectors";
+import { useSelector, useDispatch } from "react-redux";
 const schema = yup.object().shape({
   email: yupFormSchemas.string("email", { required: true }),
   password: yupFormSchemas.string("password", { required: true }),
 });
 function SingupPage() {
-  const onSubmit = () => {};
+  const dispatch = useDispatch();
+  const externalErrorMessage = useSelector(selectors.selectErrorMessage);
+  const onSubmit = ({ email, password }) => {
+    dispatch(actions.doSiginupWithEmailAndPassword(email, password));
+  };
   const form = useForm({
     resolver: yupResolver(schema),
     mode: "all",
@@ -42,6 +49,7 @@ function SingupPage() {
                         label={"Email"}
                         name={"email"}
                         placeholder={"Email"}
+                        externalErrorMessage={externalErrorMessage}
                       />
                       <InputFormItem
                         className={"form-group col-6"}
