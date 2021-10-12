@@ -1,6 +1,10 @@
 import React from "react";
+import { FormProvider, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import InputFormItem from "../shared/form/items/InputFormItem";
 function SingupPage() {
+  const onSubmit = () => {};
+  const form = useForm({});
   return (
     <section className='section'>
       <div className='container mt-5'>
@@ -19,117 +23,36 @@ function SingupPage() {
                 <h4>Register</h4>
               </div>
               <div className='card-body'>
-                <form method='POST'>
-                  <div className='row'>
-                    <div className='form-group col-6'>
-                      <label>First Name</label>
-                      <input
-                        id='frist_name'
-                        type='text'
-                        className='form-control'
-                        name='frist_name'
+                <FormProvider {...form}>
+                  <form>
+                    <div className='row'>
+                      <InputFormItem
+                        className={"form-group col-6"}
+                        label={"Email"}
+                        name={"Email"}
+                        placeholder={"Email"}
+                      />
+                      <InputFormItem
+                        className={"form-group col-6"}
+                        label={"Password"}
+                        name={"password"}
+                        placeholder={"Password"}
                       />
                     </div>
-                    <div className='form-group col-6'>
-                      <label>Last Name</label>
-                      <input
-                        id='last_name'
-                        type='text'
-                        className='form-control'
-                        name='last_name'
-                      />
+
+                    <div className='form-group'>
+                      <button
+                        type='submit'
+                        className='btn btn-primary btn-lg btn-block'>
+                        Register
+                      </button>
                     </div>
-                  </div>
-                  <div className='form-group'>
-                    <label>Email</label>
-                    <input
-                      id='email'
-                      type='email'
-                      className='form-control'
-                      name='email'
-                    />
-                    <div className='invalid-feedback'></div>
-                  </div>
-                  <div className='row'>
-                    <div className='form-group col-6'>
-                      <label className='d-block'>Password</label>
-                      <input
-                        id='password'
-                        type='password'
-                        className='form-control pwstrength'
-                        data-indicator='pwindicator'
-                        name='password'
-                      />
-                      <div id='pwindicator' className='pwindicator'>
-                        <div className='bar'></div>
-                        <div className='label'></div>
-                      </div>
-                    </div>
-                    <div className='form-group col-6'>
-                      <label className='d-block'>Password Confirmation</label>
-                      <input
-                        id='password2'
-                        type='password'
-                        className='form-control'
-                        name='password-confirm'
-                      />
-                    </div>
-                  </div>
-                  <div className='form-divider'>Your Home</div>
-                  <div className='row'>
-                    <div className='form-group col-6'>
-                      <label>Country</label>
-                      <select className='form-control selectric'>
-                        <option>USA</option>
-                        <option>Palestine</option>
-                        <option>Syria</option>
-                        <option>Malaysia</option>
-                        <option>Thailand</option>
-                      </select>
-                    </div>
-                    <div className='form-group col-6'>
-                      <label>Province</label>
-                      <select className='form-control selectric'>
-                        <option>West Java</option>
-                        <option>East Java</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div className='row'>
-                    <div className='form-group col-6'>
-                      <label>City</label>
-                      <input type='text' className='form-control' />
-                    </div>
-                    <div className='form-group col-6'>
-                      <label>Postal Code</label>
-                      <input type='text' className='form-control' />
-                    </div>
-                  </div>
-                  <div className='form-group'>
-                    <div className='custom-control custom-checkbox'>
-                      <input
-                        type='checkbox'
-                        name='agree'
-                        className='custom-control-input'
-                        id='agree'
-                      />
-                      <label className='custom-control-label'>
-                        I agree with the terms and conditions
-                      </label>
-                    </div>
-                  </div>
-                  <div className='form-group'>
-                    <button
-                      type='submit'
-                      className='btn btn-primary btn-lg btn-block'>
-                      Register
-                    </button>
-                  </div>
-                </form>
+                  </form>
+                </FormProvider>
               </div>
             </div>
             <div className='mt-5 text-muted text-center'>
-              Don't have an account?{" "}
+              Don't have an account?
               <Link to='/auth/signin'>
                 <a>Login One</a>
               </Link>

@@ -11,6 +11,8 @@ const authActions = {
   AUTH_START: `${prefix}_AUTH_START`,
   AUTH_SUCCESS: `${prefix}_AUTH_SUCCESS`,
   AUTH_ERROR: `${prefix}_AUTH_ERROR`,
+  AUTH_INIT_SUCCESS: `${prefix}_AUTH_INIT_SUCCESS`,
+  AUTH_INIT_ERROR: `${prefix}_AUTH_INIT_ERROR`,
 
   doSiginWithEmailAndPassword:
     (email, password, rememberMe) => async (dispatch) => {
@@ -35,7 +37,30 @@ const authActions = {
         });
       }
     },
-  doSiginupWithEmailAndPassword: () => async (dispatch) => {},
+  doSiginupWithEmailAndPassword: (email, password) => async (dispatch) => {
+    try {
+      let currentUser = null;
+      dispatch({ type: authActions.AUTH_START });
+      const token = await AuthService.registerWithEmailAndPassword(
+        email,
+        password
+      );
+
+      AuthToken.set(token, true);
+      currentUser = await AuthService.fetchMe();
+
+      dispatch({ type: authActions.AUTH_SUCCESS, payload: { currentUser } });
+    } catch (error) {
+      await AuthService.signout();
+      if (Errors.errorCode(error) !== 400) {
+        Errors.handle(error);
+      }
+      dispatch({
+        type: authActions.AUTH_ERROR,
+        payload: Errors.selectMessage(error),
+      });
+    }
+  },
   doSignout: () => async (dispatch) => {
     try {
       dispatch({ type: authActions.AUTH_START });
@@ -61,6 +86,26 @@ const authActions = {
       dispatch({ type: authActions.AUTH_SUCCESS, payload: { currentUser } });
     } catch (error) {
       dispatch({ type: authActions.AUTH_ERROR });
+    }
+  },
+
+  doInit: () => async (dispatch) => {
+    try {
+      const token = AuthToken.get();
+      let currentUser = null;
+      if (token) {
+        currentUser = await AuthService.fetchMe();
+      }
+      dispatch({
+        type: authActions.AUTH_INIT_SUCCESS,
+        payload: {
+          currentUser,
+        },
+      });
+    } catch (error) {
+      AuthService.signout();
+      Errors.handle(error);
+      dispatch({ type: authActions.AUTH_INIT_ERROR, payload: error });
     }
   },
   updateProfile: (values) => async (disptach) => {

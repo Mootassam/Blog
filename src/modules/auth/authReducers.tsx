@@ -7,6 +7,7 @@ const initialState = {
   loading: false,
   currentUser: null,
   errorMessage: null,
+  loadingInit: true,
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -40,5 +41,19 @@ export default (state = initialState, { type, payload }) => {
     return { ...state, LoadingUpdated: false };
   }
 
+  if (type === actions.AUTH_INIT_SUCCESS) {
+    return {
+      ...state,
+      currentUser: payload.currentUser || null,
+      loadingInit: false,
+    };
+  }
+  if (type === actions.AUTH_INIT_ERROR) {
+    return {
+      ...state,
+      currentUser: null,
+      loadingInit: false,
+    };
+  }
   return state;
 };

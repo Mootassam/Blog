@@ -1,6 +1,10 @@
 import { createSelector } from "reselect";
 const selectRaw = (state) => state.auth;
 
+const selectLoadingInit = createSelector([selectRaw], (auth) =>
+  Boolean(auth.loadingInit)
+);
+
 const LoadingUpdated = createSelector(
   [selectRaw],
   (loading) => loading.LoadingUpdated
@@ -15,5 +19,6 @@ const authSelctors = {
   LoadingUpdated,
   currentUser,
   selectErrorMessage,
+  selectLoadingInit,
 };
 export default authSelctors;

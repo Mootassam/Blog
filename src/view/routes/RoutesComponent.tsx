@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Switch, Route } from "react-router-dom";
 import routes from "src/view/router";
 import PrivateRoutes from "src/view/routes/PrivateRoutes";
@@ -6,14 +6,30 @@ import CustomLoadable from "../shared/CustomLoadable";
 import PublicRoutes from "./PublicRoutes";
 import selectors from "src/modules/auth/authSelectors";
 import { useSelector } from "react-redux";
+import ProgressBar from "../shared/ProgressBar";
 function RoutesComponent() {
+  const isInitialMount = useRef(true);
+  const authLoading = useSelector(selectors.selectLoadingInit);
   const currentUser = useSelector(selectors.currentUser);
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      ProgressBar.start();
+      return;
+    }
+    if (!authLoading) {
+      ProgressBar.done();
+    }
+  }, [authLoading]);
+  // if (authLoading) {
+  //   return <div />;
+  // }
   return (
     <Switch>
       {routes.publicRoutes.map((route) => (
         <PublicRoutes
-          exact
           key={route.path}
+          exact
           path={route.path}
           currentUser={currentUser}
           component={CustomLoadable({
