@@ -2,9 +2,11 @@ import React from "react";
 import { FcDoNotInhale, FcAssistant, FcSearch } from "react-icons/fc";
 import { getHistory } from "../../modules/store";
 import actions from "src/modules/auth/authActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import selectors from "src/modules/auth/authSelectors";
 function Header() {
   const dispatch = useDispatch();
+  const currentUser = useSelector(selectors.currentUser);
   const doNavigateToProfile = () => {
     getHistory().push("/profile");
   };
@@ -95,7 +97,7 @@ function Header() {
               className='rounded-circle mr-1'
             />
             <div className='d-sm-none d-lg-inline-block'>
-              Hi, Michelle Green
+              HI ! {currentUser && currentUser.lastName}
             </div>
           </a>
           <div className='dropdown-menu dropdown-menu-right'>

@@ -39,10 +39,4 @@ export default [
     icon: <FcMms size={25} />,
     label: "Portfolio",
   },
-  {
-    path: "/profile",
-    exact: true,
-    icon: <FcAbout size={25} />,
-    label: "About",
-  },
 ];
