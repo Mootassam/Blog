@@ -1,4 +1,5 @@
 import authAxios from "src/modules/shared/axios/authAxios";
+import authCurrentTenant from "../auth/authCurrentTenant";
 
 export default class ContactService {
   static async update(id, data) {
@@ -6,9 +7,9 @@ export default class ContactService {
       id,
       data,
     };
-
+    const tenantId = authCurrentTenant.get();
     const response = await authAxios.put(
-      `/tenant/6160acd9faa35d7d3d8cbf7f/contact/${id}`,
+      `/tenant/${tenantId}/contact/${id}`,
       body
     );
 
@@ -19,13 +20,10 @@ export default class ContactService {
     const params = {
       ids,
     };
-
-    const response = await authAxios.delete(
-      `/tenant/6160acd9faa35d7d3d8cbf7f/contact`,
-      {
-        params,
-      }
-    );
+    const tenantId = authCurrentTenant.get();
+    const response = await authAxios.delete(`/tenant/${tenantId}/contact`, {
+      params,
+    });
 
     return response.data;
   }
@@ -34,11 +32,8 @@ export default class ContactService {
     const body = {
       data,
     };
-
-    const response = await authAxios.post(
-      `/tenant/6160acd9faa35d7d3d8cbf7f/contact`,
-      body
-    );
+    const tenantId = authCurrentTenant.get();
+    const response = await authAxios.post(`/tenant/${tenantId}/contact`, body);
 
     return response.data;
   }
@@ -48,9 +43,9 @@ export default class ContactService {
       data: values,
       importHash,
     };
-
+    const tenantId = authCurrentTenant.get();
     const response = await authAxios.post(
-      `/tenant/6160acd9faa35d7d3d8cbf7f/contact/import`,
+      `/tenant/${tenantId}/contact/import`,
       body
     );
 
@@ -58,17 +53,15 @@ export default class ContactService {
   }
 
   static async find(id) {
-    const response = await authAxios.get(
-      `/tenant/6160acd9faa35d7d3d8cbf7f/contact/${id}`
-    );
+    const tenantId = authCurrentTenant.get();
+    const response = await authAxios.get(`/tenant/${tenantId}/contact/${id}`);
 
     return response.data;
   }
 
   static async list() {
-    const response = await authAxios.get(
-      `/tenant/6160acd9faa35d7d3d8cbf7f/contact`
-    );
+    const tenantId = authCurrentTenant.get();
+    const response = await authAxios.get(`/tenant/${tenantId}/contact`);
 
     return response.data;
   }
@@ -80,7 +73,7 @@ export default class ContactService {
   //   };
 
   //   const response = await authAxios.get(
-  //     `/tenant/6160acd9faa35d7d3d8cbf7f/contact/autocomplete`,
+  //     `/tenant/${tenantId}/contact/autocomplete`,
   //     {
   //       params,
   //     }

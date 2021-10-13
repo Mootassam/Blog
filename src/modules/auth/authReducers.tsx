@@ -1,8 +1,10 @@
 import actions from "src/modules/auth/authActions";
+import authCurrentTenant from "./authCurrentTenant";
 
 const initialState = {
   LoadingProfile: false,
   LoadingUpdated: false,
+  currentTenant: null,
   record: null,
   loading: false,
   currentUser: null,
@@ -22,6 +24,9 @@ export default (state = initialState, { type, payload }) => {
       ...state,
       loading: false,
       currentUser: payload.currentUser || null,
+      currentTenant: authCurrentTenant.selectAndSaveOnStorageFor(
+        payload.currentUser
+      ),
       errorMessage: null,
     };
   }
@@ -31,6 +36,7 @@ export default (state = initialState, { type, payload }) => {
       loading: false,
       errorMessage: payload || null,
       currentUser: null,
+      currentTenant: null,
     };
   }
 
