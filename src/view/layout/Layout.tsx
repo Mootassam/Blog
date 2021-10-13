@@ -13,7 +13,7 @@ function Layout(props) {
         <Menue />
         <div className='main-content'>{props.children}</div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
