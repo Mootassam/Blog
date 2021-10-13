@@ -2,7 +2,24 @@ import React from "react";
 import { FaBeer } from "react-icons/fa";
 import menus from "../menus";
 import { Link } from "react-router-dom";
-function Menue() {
+function Menue(props) {
+  const selectedKeys = () => {
+    const url = props.url;
+
+    const match = menus.find((option) => {
+      if (option.exact) {
+        return url === option.path;
+      }
+
+      return url === option.path || url.startsWith(option.path + "/");
+    });
+
+    if (match) {
+      return [match.path];
+    }
+
+    return [];
+  };
   return (
     <div className='main-sidebar sidebar-style-2'>
       <aside id='sidebar-wrapper'>
@@ -22,21 +39,6 @@ function Menue() {
                 </Link>
               </a>
             ))}
-
-            {/* <ul className='dropdown-menu'>
-              <li>
-                <a href='auth-forgot-password.html'>Forgot Password</a>
-              </li>
-              <li>
-                <a href='auth-login.html'>Login</a>
-              </li>
-              <li>
-                <a href='auth-register.html'>Register</a>
-              </li>
-              <li>
-                <a href='auth-reset-password.html'>Reset Password</a>
-              </li>
-            </ul> */}
           </li>
         </ul>
         <div className='mt-4 mb-4 p-3 hide-sidebar-mini'>

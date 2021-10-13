@@ -1,14 +1,14 @@
-let inMemory = null;
+let inMemoryToken = null;
 export class AuthToken {
   static set(token, rememberMe) {
     if (rememberMe) {
       localStorage.setItem("jwt", token || "");
     } else {
-      inMemory = token;
+      inMemoryToken = token;
       localStorage.setItem("jwt", "");
     }
   }
   static get() {
-    return inMemory || localStorage.getItem("jwt") || null;
+    return inMemoryToken || localStorage.getItem("jwt") || null;
   }
 }

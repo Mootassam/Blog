@@ -4,6 +4,7 @@ import createRootReducer from "src/modules/reducers";
 import { applyMiddleware, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
 import thunkMiddleware from "redux-thunk";
+import initializers from "src/modules//auth/initializers";
 
 const history = createBrowserHistory();
 
@@ -19,6 +20,9 @@ export function configureStore(preloadedState?) {
     composeWithDevTools(applyMiddleware(...middlewares))
   );
 
+  for (const initializer of initializers) {
+    initializer(store);
+  }
   return store;
 }
 

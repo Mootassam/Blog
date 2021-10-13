@@ -1,14 +1,24 @@
-import React from "react";
-import { Route, useLocation, Redirect } from "react-router-dom";
-import Layout from "../layout/Layout";
 import PermissionChecker from "src/modules/auth/permissionChecker";
-function PrivateRoutes({ component: Component, currentUser, ...rest }) {
+import React from "react";
+import { Redirect, Route, useLocation } from "react-router-dom";
+import Layout from "src/view/layout/Layout";
+
+function PrivateRoute({
+  component: Component,
+  currentTenant,
+  currentUser,
+  ...rest
+}) {
   const location = useLocation();
   return (
     <Route
       {...rest}
       render={(props) => {
-        const permissionChecker = new PermissionChecker(currentUser);
+        const permissionChecker = new PermissionChecker(
+          currentTenant,
+          currentUser
+        );
+
         if (!permissionChecker.isAuthenticated) {
           return (
             <Redirect
@@ -19,6 +29,7 @@ function PrivateRoutes({ component: Component, currentUser, ...rest }) {
             />
           );
         }
+
         return (
           <Layout {...props}>
             <Component {...props} />
@@ -29,4 +40,4 @@ function PrivateRoutes({ component: Component, currentUser, ...rest }) {
   );
 }
 
-export default PrivateRoutes;
+export default PrivateRoute;

@@ -1,11 +1,20 @@
-import { Route, Redirect } from "react-router-dom";
 import PermissionChecker from "src/modules/auth/permissionChecker";
-function PublicRoutes({ component: Component, currentUser, ...rest }) {
+import { Redirect, Route } from "react-router-dom";
+
+function PublicRoute({
+  component: Component,
+  currentTenant,
+  currentUser,
+  ...rest
+}) {
   return (
     <Route
       {...rest}
       render={(props) => {
-        const permissionChecker = new PermissionChecker(currentUser);
+        const permissionChecker = new PermissionChecker(
+          currentTenant,
+          currentUser
+        );
 
         if (permissionChecker.isAuthenticated) {
           return <Redirect to='/' />;
@@ -16,4 +25,5 @@ function PublicRoutes({ component: Component, currentUser, ...rest }) {
     />
   );
 }
-export default PublicRoutes;
+
+export default PublicRoute;

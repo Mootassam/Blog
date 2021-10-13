@@ -7,10 +7,11 @@ import PublicRoutes from "./PublicRoutes";
 import selectors from "src/modules/auth/authSelectors";
 import { useSelector } from "react-redux";
 import ProgressBar from "../shared/ProgressBar";
-function RoutesComponent() {
+function RoutesComponent(props) {
   const isInitialMount = useRef(true);
   const authLoading = useSelector(selectors.selectLoadingInit);
   const currentUser = useSelector(selectors.currentUser);
+  const currentTenant = useSelector(selectors.currentTenant);
   useEffect(() => {
     if (isInitialMount.current) {
       isInitialMount.current = false;
@@ -21,9 +22,9 @@ function RoutesComponent() {
       ProgressBar.done();
     }
   }, [authLoading]);
-  // if (authLoading) {
-  //   return <div />;
-  // }
+  if (authLoading) {
+    return <div />;
+  }
   return (
     <Switch>
       {routes.publicRoutes.map((route) => (
@@ -31,6 +32,7 @@ function RoutesComponent() {
           key={route.path}
           exact
           path={route.path}
+          currentTenant={currentTenant}
           currentUser={currentUser}
           component={CustomLoadable({
             loader: route.loader,
@@ -40,8 +42,9 @@ function RoutesComponent() {
       {routes.privateRoutes.map((route) => (
         <PrivateRoutes
           key={route.path}
-          path={route.path}
           currentUser={currentUser}
+          currentTenant={currentTenant}
+          path={route.path}
           component={CustomLoadable({
             loader: route.loader,
           })}

@@ -50,8 +50,8 @@ const publicRoutes = [
 ].filter(Boolean);
 
 const simpleRoutes = [
-  { path: "/500", loader: () => import("src/view/shared/errors/Error500page") },
   { path: "/403", loader: () => import("src/view/shared/errors/Error403Page") },
+  { path: "/500", loader: () => import("src/view/shared/errors/Error500page") },
   { path: "**", loader: () => import("src/view/shared/errors/Error404Page") },
 ];
 export default {

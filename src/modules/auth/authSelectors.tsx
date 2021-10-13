@@ -14,11 +14,16 @@ const selectErrorMessage = createSelector(
   [selectRaw],
   (auth) => auth.errorMessage
 );
+const currentTenant = createSelector(
+  [selectRaw],
+  (teanant) => teanant.currentTenant
+);
 const currentUser = createSelector([selectRaw], (user) => user.currentUser);
 const authSelctors = {
   LoadingUpdated,
   currentUser,
   selectErrorMessage,
   selectLoadingInit,
+  currentTenant,
 };
 export default authSelctors;
