@@ -66,16 +66,19 @@ function SiginPage() {
                       placeholder={"Password"}
                     />
 
-                    <div className='form-check'>
-                      <input
-                        className='form-control'
-                        type='checkbox'
-                        id={"rememberMe"}
-                        name={"rememberMe"}
-                        ref={form.register}
-                      />
-                      Remember Me
+                    <div className='form-group '>
+                      <div className='form-check'>
+                        <input
+                          className='form-check-input'
+                          type='checkbox'
+                          id={"rememberMe"}
+                          name={"rememberMe"}
+                          ref={form.register}
+                        />
+                        <label className='form-check-label'>Remember Me</label>
+                      </div>
                     </div>
+
                     <div className='form-group'>
                       <button
                         type='submit'

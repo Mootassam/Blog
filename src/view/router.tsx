@@ -36,6 +36,16 @@ const privateRoutes = [
     loader: () => import("src/view/Education/list/EducationLisPage"),
     exact: true,
   },
+  {
+    path: "/experience",
+    loader: () => import("src/view/Experience/list/ExperienceListPage"),
+    exact: true,
+  },
+  {
+    path: "/portfolio",
+    loader: () => import("src/view/Portfolio/list/PortfolioListPage"),
+    exact: true,
+  },
 ].filter(Boolean);
 
 const publicRoutes = [

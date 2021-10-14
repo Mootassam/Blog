@@ -17,6 +17,15 @@ function ContactViewPage() {
   }, [dispatch, match.params.id]);
   return (
     <section className='section'>
+      <div className='section-header'>
+        <h1>Experience</h1>
+        <div className='section-header-breadcrumb'>
+          <div className='breadcrumb-item active'>
+            <a href='#'>Dashboard</a>
+          </div>
+          <div className='breadcrumb-item'>Edit</div>
+        </div>
+      </div>
       <div className='section-body'>
         <ContactViewToolbar match={match} />
 

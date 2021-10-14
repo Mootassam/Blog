@@ -45,7 +45,7 @@ function Menue(props) {
           <a
             href='https://getcodiepie.com/docs'
             className='btn btn-primary btn-lg btn-block btn-icon-split'>
-            <i className='fas fa-rocket'></i> Download Resume
+            <i className='fas fa-rocket'></i> Choose Template
           </a>
         </div>
       </aside>

@@ -15,28 +15,29 @@ export default [
     icon: <FcBullish size={25} />,
     label: "Dashboard",
   },
+
   {
-    path: "/contact",
-    exact: true,
-    icon: <FcBusinessContact size={25} />,
-    label: "Contact",
-  },
-  {
-    path: "/Expeience",
+    path: "/experience",
     exact: true,
     icon: <FcBriefcase size={25} />,
     label: "Expeience",
   },
   {
-    path: "/Education",
+    path: "/education",
     exact: true,
     icon: <FcGraduationCap size={25} />,
     label: "Education",
   },
   {
-    path: "/Portfolio",
+    path: "/portfolio",
     exact: true,
     icon: <FcMms size={25} />,
     label: "Portfolio",
+  },
+  {
+    path: "/contact",
+    exact: true,
+    icon: <FcBusinessContact size={25} />,
+    label: "Contact",
   },
 ];

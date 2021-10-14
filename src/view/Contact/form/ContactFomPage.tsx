@@ -29,6 +29,15 @@ function FomContactPage() {
   };
   return (
     <section className='section'>
+      <div className='section-header'>
+        <h1>Contact Form</h1>
+        <div className='section-header-breadcrumb'>
+          <div className='breadcrumb-item active'>
+            <a href='#'>Dashboard</a>
+          </div>
+          <div className='breadcrumb-item'>Settings</div>
+        </div>
+      </div>
       <div className='section-body'>
         <h2 className='section-title'>{Title}</h2>
         <p className='section-lead'>
