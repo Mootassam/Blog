@@ -112,6 +112,14 @@ function ProfileForm(props) {
               placeholder={"Some Detaill"}
             />
           </div>
+          <div className='row'>
+            <input
+              className={"form-group col-12"}
+              name={"object"}
+              type='file'
+              placeholder={"Some Detaill"}
+            />
+          </div>
         </div>
         <div className='card-footer text-right'>
           <button className='btn btn-primary'>Save Changes</button>
