@@ -44,8 +44,14 @@ function ExperienceForm(props) {
         <div className='card-body'>
           <div className='row'>
             <InputFormItem
-              className={"form-group col-md-12 col-12"}
-              label={"Role"}
+              className={"form-group col-md-6 col-12"}
+              label={"Section title"}
+              name={"role"}
+              placeholder={"Role"}
+            />
+            <InputFormItem
+              className={"form-group col-md-6 col-12"}
+              label={"Photo"}
               name={"role"}
               placeholder={"Role"}
             />
@@ -67,14 +73,14 @@ function ExperienceForm(props) {
           </div>
           <div className='row'>
             <InputFormItem
-              className={"form-group col-md-7 col-12"}
+              className={"form-group col-md-6 col-12"}
               label={"Email"}
               name={"email"}
               placeholder={"Email"}
             />
 
             <InputFormItem
-              className={"form-group col-md-5 col-12"}
+              className={"form-group col-md-6 col-12"}
               label={"Phone"}
               name={"phone"}
               placeholder={"Phone"}
@@ -84,40 +90,58 @@ function ExperienceForm(props) {
           <div className='row'>
             <InputFormItem
               className={"form-group col-md-6 col-12"}
-              label={"Linkedin"}
-              name={"linkedin"}
-              placeholder={"Linkedin"}
+              label={"Country"}
+              name={"country"}
+              placeholder={"Country"}
             />
             <InputFormItem
               className={"form-group col-md-6 col-12"}
-              label={"Github"}
-              name={"github"}
-              placeholder={"Github"}
+              label={"City"}
+              name={"city"}
+              placeholder={"City"}
             />
           </div>
 
           <div className='row'>
             <InputFormItem
-              className={"form-group col-md-12 col-12"}
-              label={"Web Site"}
+              className={"form-group col-md-6 col-12"}
+              label={"Address"}
+              name={"address"}
+              placeholder={"Address"}
+            />
+            <InputFormItem
+              className={"form-group col-md-6 col-12"}
+              label={"Postale Code"}
+              name={"code"}
+              placeholder={"Postale Code"}
+            />
+          </div>
+          <div className='row'>
+            <InputFormItem
+              className={"form-group col-md-6 col-12"}
+              label={"Driving License"}
               name={"site"}
-              placeholder={"Web Site"}
+              placeholder={"Driving License"}
+            />
+            <InputFormItem
+              className={"form-group col-md-6 col-12"}
+              label={"Nationalite"}
+              name={"site"}
+              placeholder={"Nationalite"}
             />
           </div>
           <div className='row'>
-            <TextAreaItem
-              className={"form-group col-12"}
-              name={"object"}
-              label={"Object"}
-              placeholder={"Some Detaill"}
+            <InputFormItem
+              className={"form-group col-md-6 col-12"}
+              label={"Place of birth"}
+              name={"site"}
+              placeholder={"Place of birth"}
             />
-          </div>
-          <div className='row'>
-            <input
-              className={"form-group col-12"}
-              name={"object"}
-              type='file'
-              placeholder={"Some Detaill"}
+            <InputFormItem
+              className={"form-group col-md-6 col-12"}
+              label={"Date of birth"}
+              name={"birth"}
+              placeholder={"Date of birth"}
             />
           </div>
         </div>
