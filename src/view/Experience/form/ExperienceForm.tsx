@@ -8,11 +8,9 @@ import yupFormSchemas from "src/modules/shared/yup/yupFormSchemas";
 import { useSelector, useDispatch } from "react-redux";
 import selectors from "src/modules/auth/authSelectors";
 const schema = yup.object().shape({
-  role: yupFormSchemas.string("role", { required: true }),
   firstName: yupFormSchemas.string("firstName", { required: true }),
   lastName: yupFormSchemas.string("lastName", { required: true }),
   email: yupFormSchemas.string("email", { required: true }),
-  object: yupFormSchemas.string("object", { required: true }),
 });
 function ExperienceForm(props) {
   const currentUser = useSelector(selectors.currentUser);
@@ -46,14 +44,14 @@ function ExperienceForm(props) {
             <InputFormItem
               className={"form-group col-md-6 col-12"}
               label={"Section title"}
-              name={"role"}
-              placeholder={"Role"}
+              name={"title"}
+              placeholder={"Section title"}
             />
             <InputFormItem
               className={"form-group col-md-6 col-12"}
               label={"Photo"}
-              name={"role"}
-              placeholder={"Role"}
+              name={"photo"}
+              placeholder={"Photo"}
             />
           </div>
           <div className='row'>
@@ -120,13 +118,13 @@ function ExperienceForm(props) {
             <InputFormItem
               className={"form-group col-md-6 col-12"}
               label={"Driving License"}
-              name={"site"}
+              name={"driving"}
               placeholder={"Driving License"}
             />
             <InputFormItem
               className={"form-group col-md-6 col-12"}
               label={"Nationalite"}
-              name={"site"}
+              name={"nationalite"}
               placeholder={"Nationalite"}
             />
           </div>
@@ -134,13 +132,13 @@ function ExperienceForm(props) {
             <InputFormItem
               className={"form-group col-md-6 col-12"}
               label={"Place of birth"}
-              name={"site"}
+              name={"place"}
               placeholder={"Place of birth"}
             />
             <InputFormItem
               className={"form-group col-md-6 col-12"}
               label={"Date of birth"}
-              name={"birth"}
+              name={"date"}
               placeholder={"Date of birth"}
             />
           </div>
