@@ -2,7 +2,7 @@ import React from "react";
 import EmploymentHistoryService from "src/modules/experience/employmentHistoryService";
 import Message from "../../../view/shared/messages";
 import Errors from "../../shared/error/errors";
-
+import { getHistory } from "../../store";
 const prefix = "EXPERIENCE";
 const ExperienceFomrActions = {
   CREATE_STARTED: `${prefix}_CREATE_STARTED`,
@@ -15,6 +15,7 @@ const ExperienceFomrActions = {
       await EmploymentHistoryService.create(values);
       disptach({ type: ExperienceFomrActions.CREATE_SUCCESS });
       Message.success("Experience added wiht sucess");
+      getHistory().push("/experience");
     } catch (error) {
       Errors.handle(error);
       disptach({ type: ExperienceFomrActions.CREATE_ERROR });
