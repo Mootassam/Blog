@@ -1,7 +1,14 @@
 import React from "react";
-import ExperienceForm from "./ExperienceForm";
+import { useDispatch } from "react-redux";
 
-function experienceFormPage() {
+import ExperienceForm from "./ExperienceForm";
+import actions from "src/modules/experience/form/ExperienceFomrActions";
+
+function ExperienceFormPage() {
+  const dispatch = useDispatch();
+  const onSubmit = (values) => {
+    dispatch(actions.doCreate(values));
+  };
   return (
     <section className='section'>
       <div className='section-header'>
@@ -21,11 +28,7 @@ function experienceFormPage() {
         <div className='row'>
           <div className='col-12 col-md-12 col-lg-12'>
             <div className='card'>
-              <ExperienceForm
-                onSubmit={() => {
-                  alert("nice form");
-                }}
-              />
+              <ExperienceForm onSubmit={onSubmit} />
             </div>
           </div>
         </div>
@@ -34,4 +37,4 @@ function experienceFormPage() {
   );
 }
 
-export default experienceFormPage;
+export default ExperienceFormPage;

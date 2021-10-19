@@ -12,8 +12,6 @@ const schema = yup.object().shape({
   email: yupFormSchemas.string("email", { required: true }),
 });
 function ExperienceForm(props) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const detaill = useRef<any>();
   const [show, setshow] = useState(false);
 
   const onOpen = () => {
@@ -165,20 +163,6 @@ function ExperienceForm(props) {
               aria-expanded='false'>
               {!show && <h4 onClick={onOpen}>Edit additional details</h4>}
               {show && <h4 onClick={onClose}>Hide additional details</h4>}
-            </div>
-            <div
-              className='accordion-body collapse'
-              id='panel-body-3'
-              data-parent='#accordion'>
-              <p className='mb-0'>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
             </div>
           </div>
         </div>

@@ -48,7 +48,7 @@ const privateRoutes = [
   },
   {
     path: "/experience/new",
-    loader: () => import("src/view/Experience/form/experienceFormPage"),
+    loader: () => import("src/view/Experience/form/ExperienceFormPage"),
     exact: true,
   },
   {
