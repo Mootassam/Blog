@@ -76,21 +76,11 @@ export default class EmploymentHistoryService {
     return response.data;
   }
 
-  static async list(filter, orderBy, limit, offset) {
-    const params = {
-      filter,
-      orderBy,
-      limit,
-      offset,
-    };
-
+  static async list() {
     const tenantId = AuthCurrentTenant.get();
 
     const response = await authAxios.get(
-      `/tenant/${tenantId}/employment-history`,
-      {
-        params,
-      }
+      `/tenant/${tenantId}/employment-history`
     );
 
     return response.data;

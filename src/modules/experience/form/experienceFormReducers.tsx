@@ -14,4 +14,6 @@ export default (state = initialState, { type }) => {
   if (type === actions.CREATE_ERROR) {
     return { ...state, loading: false };
   }
+
+  return state;
 };

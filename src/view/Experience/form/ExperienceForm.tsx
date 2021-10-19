@@ -8,9 +8,9 @@ import { useSelector, useDispatch } from "react-redux";
 import selectors from "src/modules/auth/authSelectors";
 import TextAreaItem from "../../shared/form/items/TextAreaItem";
 const schema = yup.object().shape({
-  jobTitle: yupFormSchemas.string("firstName", { required: true }),
-  employer: yupFormSchemas.string("lastName", { required: true }),
-  startEnd: yupFormSchemas.string("email", { required: true }),
+  jobTitle: yupFormSchemas.string("jobTitle", { required: true }),
+  employer: yupFormSchemas.string("employer", { required: true }),
+  startEnd: yupFormSchemas.string("startEnd", { required: true }),
 });
 function ExperienceForm(props) {
   const [show, setshow] = useState(false);
@@ -54,17 +54,17 @@ function ExperienceForm(props) {
           <div className='row'>
             <InputFormItem
               className={"form-group col-md-12 col-12"}
-              label={"titleSection"}
+              label={"Title Section"}
               name={"titleSection"}
-              placeholder={"Phone"}
+              placeholder={"Section Title"}
             />
           </div>
           <div className='row'>
             <InputFormItem
               className={"form-group col-md-6 col-12"}
-              label={"jobTitle"}
+              label={"job Title"}
               name={"jobTitle"}
-              placeholder={"jobTitle"}
+              placeholder={"job Title"}
             />
             <InputFormItem
               className={"form-group col-md-6 col-12"}
@@ -76,7 +76,7 @@ function ExperienceForm(props) {
           <div className='row'>
             <InputFormItem
               className={"form-group col-md-6 col-12"}
-              label={"Date Start && date End"}
+              label={"date Start && date End"}
               name={"startEnd"}
               placeholder={"startEnd"}
             />
