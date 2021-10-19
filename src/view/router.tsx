@@ -33,7 +33,12 @@ const privateRoutes = [
   },
   {
     path: "/education",
-    loader: () => import("src/view/Education/list/EducationLisPage"),
+    loader: () => import("src/view/Education/list/EducationListPage"),
+    exact: true,
+  },
+  {
+    path: "/education/new",
+    loader: () => import("src/view/Education/form/EducationFormPage"),
     exact: true,
   },
   {

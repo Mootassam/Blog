@@ -1,16 +1,16 @@
 import React from "react";
-import ExperienceForm from "./ExperienceForm";
+import ExperienceForm from "./EducationForm";
 
 function experienceFormPage() {
   return (
     <section className='section'>
       <div className='section-header'>
-        <h1>Experience Form</h1>
+        <h1>Education Form</h1>
         <div className='section-header-breadcrumb'>
           <div className='breadcrumb-item active'>
             <a href='#'>Dashboard</a>
           </div>
-          <div className='breadcrumb-item'>experience</div>
+          <div className='breadcrumb-item'>education</div>
         </div>
       </div>
       <div className='section-body'>
