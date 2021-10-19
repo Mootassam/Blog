@@ -6,10 +6,11 @@ import * as yup from "yup";
 import yupFormSchemas from "src/modules/shared/yup/yupFormSchemas";
 import { useSelector, useDispatch } from "react-redux";
 import selectors from "src/modules/auth/authSelectors";
+import TextAreaItem from "../../shared/form/items/TextAreaItem";
 const schema = yup.object().shape({
-  firstName: yupFormSchemas.string("firstName", { required: true }),
-  lastName: yupFormSchemas.string("lastName", { required: true }),
-  email: yupFormSchemas.string("email", { required: true }),
+  jobTitle: yupFormSchemas.string("firstName", { required: true }),
+  employer: yupFormSchemas.string("lastName", { required: true }),
+  startEnd: yupFormSchemas.string("email", { required: true }),
 });
 function ExperienceForm(props) {
   const [show, setshow] = useState(false);
@@ -37,6 +38,8 @@ function ExperienceForm(props) {
     };
   });
   const onSumbit = (values) => {
+    console.log(values);
+
     props.onSubmit(values);
   };
   const form = useForm({
@@ -50,120 +53,48 @@ function ExperienceForm(props) {
         <div className='card-body'>
           <div className='row'>
             <InputFormItem
-              className={"form-group col-md-6 col-12"}
-              label={"Section title"}
-              name={"title"}
-              placeholder={"Section title"}
-            />
-            <InputFormItem
-              className={"form-group col-md-6 col-12"}
-              label={"Photo"}
-              name={"photo"}
-              placeholder={"Photo"}
-            />
-          </div>
-          <div className='row'>
-            <InputFormItem
-              className={"form-group col-md-6 col-12"}
-              label={"First Name"}
-              name={"firstName"}
-              placeholder={"Name"}
-            />
-
-            <InputFormItem
-              className={"form-group col-md-6 col-12"}
-              label={"last Name"}
-              name={"lastName"}
-              placeholder={"last_name"}
-            />
-          </div>
-          <div className='row'>
-            <InputFormItem
-              className={"form-group col-md-6 col-12"}
-              label={"Email"}
-              name={"email"}
-              placeholder={"Email"}
-            />
-
-            <InputFormItem
-              className={"form-group col-md-6 col-12"}
-              label={"Phone"}
-              name={"phone"}
+              className={"form-group col-md-12 col-12"}
+              label={"titleSection"}
+              name={"titleSection"}
               placeholder={"Phone"}
             />
           </div>
-          {show && (
-            <>
-              <div className='row'>
-                <InputFormItem
-                  className={"form-group col-md-6 col-12"}
-                  label={"Country"}
-                  name={"country"}
-                  placeholder={"Country"}
-                />
-                <InputFormItem
-                  className={"form-group col-md-6 col-12"}
-                  label={"City"}
-                  name={"city"}
-                  placeholder={"City"}
-                />
-              </div>
+          <div className='row'>
+            <InputFormItem
+              className={"form-group col-md-6 col-12"}
+              label={"jobTitle"}
+              name={"jobTitle"}
+              placeholder={"jobTitle"}
+            />
+            <InputFormItem
+              className={"form-group col-md-6 col-12"}
+              label={"employer"}
+              name={"employer"}
+              placeholder={"employer"}
+            />
+          </div>
+          <div className='row'>
+            <InputFormItem
+              className={"form-group col-md-6 col-12"}
+              label={"Date Start && date End"}
+              name={"startEnd"}
+              placeholder={"startEnd"}
+            />
 
-              <div className='row'>
-                <InputFormItem
-                  className={"form-group col-md-6 col-12"}
-                  label={"Address"}
-                  name={"address"}
-                  placeholder={"Address"}
-                />
-                <InputFormItem
-                  className={"form-group col-md-6 col-12"}
-                  label={"Postale Code"}
-                  name={"code"}
-                  placeholder={"Postale Code"}
-                />
-              </div>
-              <div className='row'>
-                <InputFormItem
-                  className={"form-group col-md-6 col-12"}
-                  label={"Driving License"}
-                  name={"driving"}
-                  placeholder={"Driving License"}
-                />
-                <InputFormItem
-                  className={"form-group col-md-6 col-12"}
-                  label={"Nationalite"}
-                  name={"nationalite"}
-                  placeholder={"Nationalite"}
-                />
-              </div>
-              <div className='row'>
-                <InputFormItem
-                  className={"form-group col-md-6 col-12"}
-                  label={"Place of birth"}
-                  name={"place"}
-                  placeholder={"Place of birth"}
-                />
-                <InputFormItem
-                  className={"form-group col-md-6 col-12"}
-                  label={"Date of birth"}
-                  name={"date"}
-                  placeholder={"Date of birth"}
-                />
-              </div>
-            </>
-          )}
-
-          <div className='accordion'>
-            <div
-              className='accordion-header collapsed'
-              role='button'
-              data-toggle='collapse'
-              data-target='#panel-body-3'
-              aria-expanded='false'>
-              {!show && <h4 onClick={onOpen}>Edit additional details</h4>}
-              {show && <h4 onClick={onClose}>Hide additional details</h4>}
-            </div>
+            <InputFormItem
+              className={"form-group col-md-6 col-12"}
+              label={"city"}
+              name={"city"}
+              placeholder={"city"}
+            />
+          </div>
+          <div className='row'>
+            <TextAreaItem
+              className={"form-group col-md-12 col-12"}
+              label={"description"}
+              name={"description"}
+              placeholder={"description"}
+            />
           </div>
         </div>
         <div className='card-footer text-right'>
