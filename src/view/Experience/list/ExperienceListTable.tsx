@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import actions from "src/modules/experience/list/ExperienceListActions";
 import selectors from "src/modules/experience/list/ExperienceListSelectors";
 import Spinner from "../../shared/Spinner/Spinner";
+import { Link } from "react-router-dom";
 function ExperienceListTable() {
   const dispatch = useDispatch();
   const listLoading = useSelector(selectors.ListLoading);
@@ -27,7 +28,10 @@ function ExperienceListTable() {
                   <p>{rows.startEnd}</p>
                   <p>{rows.description}</p>
                   <a href='features-setting-detail.html' className='card-cta'>
-                    Change Setting <i className='fas fa-chevron-right'></i>
+                    <Link to={`experience/${rows.id}/edit`}>
+                      Edit Experience
+                    </Link>
+                    <i className='fas fa-chevron-right'></i>
                   </a>
                 </div>
               </div>

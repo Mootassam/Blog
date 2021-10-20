@@ -1,13 +1,31 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import selectors from "src/modules/experience/form/experienceFormSelectors";
 import ExperienceForm from "./ExperienceForm";
 import actions from "src/modules/experience/form/ExperienceFomrActions";
+import { useRouteMatch } from "react-router-dom";
+import Spinner from "../../shared/Spinner/Spinner";
 
-function ExperienceFormPage() {
+function ExperienceFormPage(props) {
   const dispatch = useDispatch();
-  const onSubmit = (values) => {
-    dispatch(actions.doCreate(values));
+  const [dispatched, setdispatch] = useState(false);
+  const match = useRouteMatch();
+  const isEditing = Boolean(match.params.id);
+  const record = useSelector(selectors.selectRecord);
+  const initLoading = useSelector(selectors.initLoading);
+  const title = isEditing ? "Edit Education" : "Add Education";
+  useEffect(() => {
+    if (isEditing) {
+      dispatch(actions.doInit(match.params.id));
+      setdispatch(true);
+    }
+  }, [dispatch, match.params.id]);
+  const onSubmit = (id, values) => {
+    if (isEditing) {
+      dispatch(actions.doUpdate(id, values));
+    } else {
+      dispatch(actions.doCreate(values));
+    }
   };
   return (
     <section className='section'>
@@ -21,14 +39,21 @@ function ExperienceFormPage() {
         </div>
       </div>
       <div className='section-body'>
-        <h2 className='section-title'>Add Education</h2>
+        <h2 className='section-title'>{title}</h2>
         <p className='section-lead'>
           Form validation using default from Bootstrap 4
         </p>
         <div className='row'>
           <div className='col-12 col-md-12 col-lg-12'>
             <div className='card'>
-              <ExperienceForm onSubmit={onSubmit} />
+              {initLoading && <Spinner />}
+              {dispatched && !initLoading && (
+                <ExperienceForm
+                  onSubmit={onSubmit}
+                  record={record}
+                  isEditing={isEditing}
+                />
+              )}
             </div>
           </div>
         </div>

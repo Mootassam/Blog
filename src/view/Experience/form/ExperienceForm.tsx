@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import yupFormSchemas from "src/modules/shared/yup/yupFormSchemas";
 import { useSelector, useDispatch } from "react-redux";
-import selectors from "src/modules/auth/authSelectors";
+import selectors from "src/modules/experience/form/experienceFormSelectors";
 import TextAreaItem from "../../shared/form/items/TextAreaItem";
 const schema = yup.object().shape({
   jobTitle: yupFormSchemas.string("jobTitle", { required: true }),
@@ -13,34 +13,21 @@ const schema = yup.object().shape({
   startEnd: yupFormSchemas.string("startEnd", { required: true }),
 });
 function ExperienceForm(props) {
-  const [show, setshow] = useState(false);
-
-  const onOpen = () => {
-    setshow(true);
-  };
-  const onClose = () => {
-    setshow(false);
-  };
-  const currentUser = useSelector(selectors.currentUser);
+  const record = useSelector(selectors.selectRecord);
   const [intialData] = useState(() => {
-    const record = currentUser || {};
+    const record = props.record || {};
 
     return {
-      role: record.role,
-      firstName: record.firstName,
-      lastName: record.lastName,
-      email: record.email,
-      phone: record.phoneNumber,
-      linkedin: record.linkedin,
-      github: record.github,
-      site: record.site,
-      object: record.object,
+      titleSection: record.titleSection,
+      jobTitle: record.jobTitle,
+      employer: record.employer,
+      startEnd: record.startEnd,
+      city: record.city,
+      description: record.description,
     };
   });
   const onSumbit = (values) => {
-    console.log(values);
-
-    props.onSubmit(values);
+    props.onSubmit(props.record?.id, values);
   };
   const form = useForm({
     resolver: yupResolver(schema),
