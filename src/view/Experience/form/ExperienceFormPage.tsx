@@ -15,10 +15,8 @@ function ExperienceFormPage(props) {
   const initLoading = useSelector(selectors.initLoading);
   const title = isEditing ? "Edit Education" : "Add Education";
   useEffect(() => {
-    if (isEditing) {
-      dispatch(actions.doInit(match.params.id));
-      setdispatch(true);
-    }
+    dispatch(actions.doInit(match.params.id));
+    setdispatch(true);
   }, [dispatch, match.params.id]);
   const onSubmit = (id, values) => {
     if (isEditing) {
