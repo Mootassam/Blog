@@ -23,16 +23,10 @@ function EducationListTable() {
                 </div>
                 <div className='card-body'>
                   <h4>
-                    {rows.degrree}at {rows.school}
+                    {rows.degrree}at {rows.school} in {rows.startEnd}
                   </h4>
-                  <p>
-                    General settings such as, site title, site description,
-                    address and so on. General settings such as, site title,
-                    site description, address and so on. General settings such
-                    as, site title, site description, address and so on. General
-                    settings such as, site title, site description, address and
-                    so on.
-                  </p>
+                  <h5>{rows.citty}</h5>
+                  <p>{rows.descrption}</p>
                   <a href='features-setting-detail.html' className='card-cta'>
                     Change Setting <i className='fas fa-chevron-right'></i>
                   </a>
