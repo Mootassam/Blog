@@ -2,6 +2,7 @@ import React from "react";
 import ExperienceForm from "./EducationForm";
 import actions from "src/modules/education/form/EducationFormActions";
 import { useDispatch } from "react-redux";
+import { getHistory } from "src/modules/store";
 function EducationFormPage() {
   const dispatch = useDispatch();
   const onSubmit = (values) => {
@@ -26,7 +27,12 @@ function EducationFormPage() {
         <div className='row'>
           <div className='col-12 col-md-12 col-lg-12'>
             <div className='card'>
-              <ExperienceForm onSubmit={onSubmit} />
+              <ExperienceForm
+                onSubmit={onSubmit}
+                onCancel={() => {
+                  getHistory().push("/education");
+                }}
+              />
             </div>
           </div>
         </div>

@@ -71,19 +71,10 @@ export default class EducationService {
     return response.data;
   }
 
-  static async list(filter, orderBy, limit, offset) {
-    const params = {
-      filter,
-      orderBy,
-      limit,
-      offset,
-    };
-
+  static async list() {
     const tenantId = AuthCurrentTenant.get();
 
-    const response = await authAxios.get(`/tenant/${tenantId}/education`, {
-      params,
-    });
+    const response = await authAxios.get(`/tenant/${tenantId}/education`);
 
     return response.data;
   }

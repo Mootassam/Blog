@@ -85,6 +85,14 @@ function EducationForm(props) {
         </div>
         <div className='card-footer text-right'>
           <button className='btn btn-primary'>Save Changes</button>
+          &nbsp;
+          <button
+            className='btn btn-danger'
+            onClick={() => {
+              props.onCancel();
+            }}>
+            Cancel
+          </button>
         </div>
       </form>
     </FormProvider>

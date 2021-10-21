@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-function ExperienceListToolbar() {
+function EducationListToolbar() {
   return (
     <>
       <h2 className='section-title'>
@@ -15,4 +15,4 @@ function ExperienceListToolbar() {
   );
 }
 
-export default ExperienceListToolbar;
+export default EducationListToolbar;
