@@ -3,7 +3,12 @@ import ExperienceForm from "./EducationForm";
 import actions from "src/modules/education/form/EducationFormActions";
 import { useDispatch } from "react-redux";
 import { getHistory } from "src/modules/store";
+import { useRouteMatch } from "react-router-dom";
+
 function EducationFormPage() {
+  const match = useRouteMatch();
+  const isEditing = Boolean(match.params.id);
+  const title = isEditing ? "Edit Education" : "Add Education";
   const dispatch = useDispatch();
   const onSubmit = (values) => {
     dispatch(actions.doCreate(values));
@@ -20,7 +25,7 @@ function EducationFormPage() {
         </div>
       </div>
       <div className='section-body'>
-        <h2 className='section-title'>Add Education</h2>
+        <h2 className='section-title'>{title}</h2>
         <p className='section-lead'>
           Form validation using default from Bootstrap 4
         </p>

@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import actions from "src/modules/education/list/EducationListActions";
 import { useDispatch, useSelector } from "react-redux";
 import selectors from "src/modules/education/list/EducationListSelectors";
-import Spinner from "../../shared/Spinner/Spinner";
+import Spinner from "src/view/shared/Spinner/Spinner";
+import { Link } from "react-router-dom";
 function EducationListTable() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -27,9 +28,9 @@ function EducationListTable() {
                   </h4>
                   <h5>{rows.citty}</h5>
                   <p>{rows.descrption}</p>
-                  <a href='features-setting-detail.html' className='card-cta'>
-                    Change Setting <i className='fas fa-chevron-right'></i>
-                  </a>
+                  <Link to={`/education/${rows.id}/edit`}>
+                    <a className='card-cta'>Edit Education</a>
+                  </Link>
                 </div>
               </div>
             </div>

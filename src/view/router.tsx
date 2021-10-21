@@ -42,6 +42,11 @@ const privateRoutes = [
     exact: true,
   },
   {
+    path: "/education/:id/edit",
+    loader: () => import("src/view/Education/form/EducationFormPage"),
+    exact: true,
+  },
+  {
     path: "/experience",
     loader: () => import("src/view/Experience/list/ExperienceListPage"),
     exact: true,
