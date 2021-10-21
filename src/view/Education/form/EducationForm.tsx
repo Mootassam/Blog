@@ -12,7 +12,7 @@ const schema = yup.object().shape({
   degree: yupFormSchemas.string("degree", { required: true }),
   startEnd: yupFormSchemas.string("startEnd", { required: true }),
 });
-function ExperienceForm(props) {
+function EducationForm(props) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
   const currentUser = useSelector(selectors.currentUser);
@@ -91,4 +91,4 @@ function ExperienceForm(props) {
   );
 }
 
-export default ExperienceForm;
+export default EducationForm;
