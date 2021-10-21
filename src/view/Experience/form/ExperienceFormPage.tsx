@@ -13,7 +13,7 @@ function ExperienceFormPage(props) {
   const isEditing = Boolean(match.params.id);
   const record = useSelector(selectors.selectRecord);
   const initLoading = useSelector(selectors.initLoading);
-  const title = isEditing ? "Edit Education" : "Add Education";
+  const title = isEditing ? "Edit Experience" : "Add Experience";
   useEffect(() => {
     dispatch(actions.doInit(match.params.id));
     setdispatch(true);
