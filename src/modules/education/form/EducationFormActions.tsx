@@ -19,5 +19,10 @@ const EducationFormActions = {
       dispatch({ type: EducationFormActions.CREATE_ERROR });
     }
   },
+
+  doFind: (id) => async (dispatch) => {
+    try {
+    } catch (error) {}
+  },
 };
 export default EducationFormActions;

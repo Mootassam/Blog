@@ -34,6 +34,7 @@ function EducationFormPage() {
             <div className='card'>
               <ExperienceForm
                 onSubmit={onSubmit}
+                isEditing={isEditing}
                 onCancel={() => {
                   getHistory().push("/education");
                 }}
