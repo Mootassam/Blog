@@ -1,12 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import InputFormItem from "src/view/shared/form/items/InputFormItem";
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import yupFormSchemas from "src/modules/shared/yup/yupFormSchemas";
-import { useSelector, useDispatch } from "react-redux";
-import selectors from "src/modules/auth/authSelectors";
-import TextAreaItem from "../../shared/form/items/TextAreaItem";
+import TextAreaItem from "src/view/shared/form/items/TextAreaItem";
 const schema = yup.object().shape({
   school: yupFormSchemas.string("school", { required: true }),
   degree: yupFormSchemas.string("degree", { required: true }),
@@ -15,18 +13,20 @@ const schema = yup.object().shape({
 function EducationForm(props) {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
-  const currentUser = useSelector(selectors.currentUser);
   const [intialData] = useState(() => {
-    const record = currentUser || {};
+    const record = props.record || {};
 
     return {
       school: record.school,
       degree: record.degree,
       startEnd: record.startEnd,
+      titleSection: record.titleSection,
+      citty: record.citty,
+      descrption: record.descrption,
     };
   });
   const onSumbit = (values) => {
-    props.onSubmit(values);
+    props.onSubmit(props.record?.id, values);
   };
   const form = useForm({
     resolver: yupResolver(schema),

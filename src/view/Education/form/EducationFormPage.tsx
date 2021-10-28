@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ExperienceForm from "./EducationForm";
 import actions from "src/modules/education/form/EducationFormActions";
-import { useDispatch } from "react-redux";
+import selectors from "src/modules/education/form/EducationFormSelectors";
+import { useDispatch, useSelector } from "react-redux";
 import { getHistory } from "src/modules/store";
 import { useRouteMatch } from "react-router-dom";
+import Spinner from "../../shared/Spinner/Spinner";
 
 function EducationFormPage() {
+  const dispatch = useDispatch();
+  const record = useSelector(selectors.selectRecord);
+  const initLoading = useSelector(selectors.initLoading);
+  const [dispatched, setdispatched] = useState(false);
   const match = useRouteMatch();
   const isEditing = Boolean(match.params.id);
   const title = isEditing ? "Edit Education" : "Add Education";
-  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(actions.doInit(match.params.id));
+    setdispatched(true);
+  }, [dispatch, match.params.id]);
   const onSubmit = (values) => {
     dispatch(actions.doCreate(values));
   };
@@ -32,13 +41,17 @@ function EducationFormPage() {
         <div className='row'>
           <div className='col-12 col-md-12 col-lg-12'>
             <div className='card'>
-              <ExperienceForm
-                onSubmit={onSubmit}
-                isEditing={isEditing}
-                onCancel={() => {
-                  getHistory().push("/education");
-                }}
-              />
+              {initLoading && <Spinner />}
+              {!initLoading && dispatched && (
+                <ExperienceForm
+                  onSubmit={onSubmit}
+                  isEditing={isEditing}
+                  record={record}
+                  onCancel={() => {
+                    getHistory().push("/education");
+                  }}
+                />
+              )}
             </div>
           </div>
         </div>
