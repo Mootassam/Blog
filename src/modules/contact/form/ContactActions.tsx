@@ -34,6 +34,7 @@ const contactFormActions = {
     try {
       dispatch({ type: contactFormActions.INIT_STARTED });
       let record = {};
+      let data = {};
       const isEdit = Boolean(id);
       if (isEdit) {
         record = await ContactService.find(id);
