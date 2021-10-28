@@ -19,8 +19,12 @@ function EducationFormPage() {
     dispatch(actions.doInit(match.params.id));
     setdispatched(true);
   }, [dispatch, match.params.id]);
-  const onSubmit = (values) => {
-    dispatch(actions.doCreate(values));
+  const onSubmit = (id, values) => {
+    if (isEditing) {
+      dispatch(actions.doUpdate(id, values));
+    } else {
+      dispatch(actions.doCreate(values));
+    }
   };
   return (
     <section className='section'>

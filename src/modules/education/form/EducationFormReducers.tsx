@@ -25,5 +25,16 @@ export default (state = initialState, { type, payload }) => {
   if (type === actions.CREATE_ERROR) {
     return { ...state, saveLoading: false };
   }
+
+  if (type === actions.UPDATE_STARTED) {
+    return { ...state, saveLoading: true };
+  }
+  if (type === actions.UPDATE_SUCCESS) {
+    return { ...state, saveLoading: true };
+  }
+  if (type === actions.UPDATE_ERROR) {
+    return { ...state, saveLoading: true };
+  }
+
   return state;
 };
