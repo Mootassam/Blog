@@ -32,11 +32,16 @@ const EducationFormActions = {
   doInit: (id) => async (dispatch) => {
     try {
       dispatch({ type: EducationFormActions.INIT_STARTED });
-      const response = await EducationService.find(id);
-      dispatch({ type: EducationFormActions.INIT_SUCCESS, payload: response });
+      let record = {};
+      const isEdit = Boolean(id);
+      if (isEdit) {
+        record = await EducationService.find(id);
+      }
+      dispatch({ type: EducationFormActions.INIT_SUCCESS, payload: record });
     } catch (error) {
       Errors.handle(error);
       dispatch({ type: EducationFormActions.INIT_ERROR });
+      getHistory().push("/education");
     }
   },
 
